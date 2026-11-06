@@ -1,0 +1,1307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Twilight Reader's Guide</title>
+<meta name="description" content="A spoiler-safe fan companion to Stephenie Meyer's Twilight Saga: Twilight, New Moon, Eclipse, Breaking Dawn and the companion novels. Books, characters, Forks and beyond, timeline, recaps, family trees and connections.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Josefin+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: sticky command bar (title + global search + tabs) over a single content column; cards in auto-fill grids.
+   On phones the tabs become an icon bar fixed to the bottom.
+   Theme: Twilight. Forks fog by day (rain-washed grey paper, pine-green ink), a black-cover night after dark with a
+   faint drizzle; the apple's deep red as the accent, Cullen-gold for family lines. */
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#eceeec; --surface:#fafbfa; --sunk:#e0e3e0; --fg:#15181a; --muted:#566062; --line:#cfd4d1;
+  --accent:#8e1b22; --accent-ink:#ffffff; --bronze:#3d6050; --gold:#93702a;
+  --good:#2f6f4c; --grey:#8a6513; --bad:#a3262b;
+  --fam:#93702a; --love:#b3263a; --friend:#2f6f4c; --foe:#5b6166; --bond:#8e1b22; --ally:#4f7590;
+  --display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body:"Nunito Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"Josefin Sans", "Gill Sans", "Segoe UI", sans-serif;
+  --r:6px;
+  --stars:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 70%);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0b0c0d; --surface:#141617; --sunk:#1e2122; --fg:#ecebe8; --muted:#a2a8a7; --line:#2b2f30;
+  --accent:#e0505a; --accent-ink:#0b0c0d; --bronze:#9cc4ad; --gold:#d9be7c;
+  --good:#7cc596; --grey:#e3b552; --bad:#f07c74;
+  --fam:#d9be7c; --love:#f0697a; --friend:#7cc596; --foe:#9aa3a8; --bond:#e0505a; --ally:#8fb4d0;
+  --stars:repeating-linear-gradient(104deg,transparent 0 26px,rgba(255,255,255,.035) 26px 27px);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b0c0d; --surface:#141617; --sunk:#1e2122; --fg:#ecebe8; --muted:#a2a8a7; --line:#2b2f30;
+  --accent:#e0505a; --accent-ink:#0b0c0d; --bronze:#9cc4ad; --gold:#d9be7c;
+  --good:#7cc596; --grey:#e3b552; --bad:#f07c74;
+  --fam:#d9be7c; --love:#f0697a; --friend:#7cc596; --foe:#9aa3a8; --bond:#e0505a; --ally:#8fb4d0;
+  --stars:repeating-linear-gradient(104deg,transparent 0 26px,rgba(255,255,255,.035) 26px 27px);
+  color-scheme:dark}
+/* ---- codex-specific additions ---- */
+.trope{margin:4px 0 0;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--bronze)}
+.town h3{font-size:1.25rem}
+ul.lm{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:5px;font-size:.92rem}
+ul.lm li{padding-left:14px;position:relative}
+ul.lm li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.spd .opt-h{margin:10px 0 2px;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bronze)}
+.spd .opt-h:first-child{margin-top:0}
+.rc-chips{display:grid;gap:8px;margin-bottom:16px}
+.rc-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.rc-s{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:150px}
+.xover{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.xover .era h3{font-size:1rem}
+header.bar .brand h1{font-weight:400;letter-spacing:.01em}
+.brand h1 .pre{font-style:italic;color:var(--muted);font-size:.8em}
+.brand h1 .thorn{font-style:italic}
+h2,h3{font-weight:400}
+header.bar{border-bottom:3px double var(--line)}
+@media (max-width:700px){.rc-s{min-width:100%}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+img{max-width:100%}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--stars),var(--surface);border-bottom:1px solid var(--line)}
+.bar .wrap{padding-block:12px 0;display:grid;gap:10px}
+.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.brand h1{font-family:var(--display);font-weight:500;font-size:clamp(1.35rem,3.6vw,1.85rem);margin:0;letter-spacing:.06em;line-height:1.1}
+.brand h1 .thorn{color:var(--bronze)}
+.brand small{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.gsearch{position:relative}
+.gsearch input{width:100%;font:inherit;padding:10px 12px 10px 36px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg);color:var(--fg)}
+.gsearch svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--muted)}
+.gres{position:absolute;left:0;right:0;top:calc(100% + 4px);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);max-height:60vh;overflow:auto;box-shadow:0 10px 30px rgba(0,0,0,.2);z-index:40}
+.gres button{display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;padding:9px 12px;border:0;background:none;color:var(--fg);font:inherit;cursor:pointer;border-bottom:1px solid var(--line)}
+.gres button:hover,.gres button:focus-visible{background:var(--sunk);outline:none}
+.gres .k{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--bronze);min-width:74px}
+.gres .s{color:var(--muted);font-size:.86rem}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{font:inherit;font-weight:500;border:0;background:none;color:var(--muted);padding:10px 12px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent)}
+nav.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+main .wrap{padding-block:22px 60px}
+h2{font-family:var(--display);font-weight:500;font-size:1.6rem;margin:0 0 4px;letter-spacing:.03em;text-wrap:balance}
+h3{font-family:var(--display);font-weight:500;font-size:1.18rem;margin:0;letter-spacing:.02em;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 18px;max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);margin:0}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+.controls input[type=search],.controls select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--fg);min-width:0}
+.controls input[type=search]{flex:1 1 220px}
+.chip{font:inherit;font-size:.9rem;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--fg);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chip:focus-visible,.card:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.count{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:start}
+.grid.wide{grid-template-columns:repeat(auto-fill,minmax(360px,1fr))}
+.group-h{display:flex;align-items:baseline;gap:10px;margin:26px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.group-h:first-child{margin-top:0}
+.group-h span{font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;min-width:0;scroll-margin-top:180px;transition:box-shadow .3s}
+.card.flash{box-shadow:0 0 0 3px var(--accent)}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}
+.card .aka{color:var(--muted);font-size:.88rem;font-style:italic}
+dl.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:10px 0 0;font-size:.93rem}
+dl.kv dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+dl.kv dd{margin:0;min-width:0}
+.pill{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.p-good{color:var(--good)} .p-grey{color:var(--grey)} .p-bad{color:var(--bad)}
+.p-dead{color:var(--muted)} .p-mark{color:var(--gold)}
+.pills{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.death{margin-top:10px;padding:8px 10px;background:var(--sunk);border-radius:var(--r);font-size:.9rem}
+.agenda{margin-top:10px;font-size:.93rem}
+.agenda b,.lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;display:block}
+a.lnk,button.lnk{color:var(--accent);background:none;border:0;padding:0;font:inherit;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+.swatch{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px;border:1px solid var(--line)}
+.books{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:10px}
+.links{margin-top:10px;font-size:.9rem}
+.note{font-size:.9rem;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r);padding:10px 12px;margin:0 0 18px;max-width:80ch}
+/* book guide */
+.order{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:0 0 22px;padding:0;list-style:none;counter-reset:o}
+.order li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-size:.9rem;position:relative}
+.order li b{display:block;font-family:var(--display);font-weight:500;font-size:.98rem;line-height:1.25}
+.order li .n{font-family:var(--mono);font-size:.66rem;color:var(--bronze);letter-spacing:.08em;text-transform:uppercase}
+.order li.opt{border-style:dashed}
+.order li.soon{border-style:dashed;opacity:.85}
+.bookcard{display:grid;grid-template-columns:64px 1fr;gap:14px}
+.spine{border-radius:4px;min-height:96px;display:flex;align-items:flex-end;justify-content:center;padding:12px 0;font-family:var(--display);font-size:1rem;letter-spacing:.14em;color:#fff;line-height:1;box-shadow:inset -6px 0 0 rgba(0,0,0,.18)}
+.spine span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+.bk-plot{margin:8px 0 0;font-size:.95rem}
+.bk-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin-top:12px}
+.buybtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;box-sizing:border-box;font:inherit;font-weight:500;font-size:.9rem;line-height:1.2;cursor:pointer;border:1px solid var(--accent);text-decoration:none;color:var(--accent-ink);background:var(--accent);border-radius:var(--r);padding:8px 14px;min-height:40px}
+.buybtn:hover{filter:brightness(1.1)}
+.buybtn svg{width:16px;height:16px}
+.buybtn.ghost{background:none;color:var(--accent);border-color:var(--line)}
+.castlist{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:.92rem;margin-top:4px}
+/* courts */
+.court-h{display:flex;gap:10px;align-items:center}
+.court-dot{width:28px;height:28px;border-radius:50%;flex-shrink:0;border:2px solid var(--line)}
+.pos{list-style:none;padding:0;margin:4px 0 0;display:grid;gap:3px;font-size:.92rem}
+.pos li{display:grid;grid-template-columns:118px 1fr;gap:8px}
+.pos li span:first-child{color:var(--muted);font-size:.85rem}
+.war{margin-top:10px;padding:10px 12px;border-left:3px solid var(--bronze);background:var(--sunk);border-radius:0 var(--r) var(--r) 0;font-size:.92rem}
+/* world */
+.sec-h{margin:34px 0 10px}
+.sec-h:first-child{margin-top:0}
+.eras{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.era{border-left:3px solid var(--accent);padding:6px 0 6px 12px;font-size:.93rem;scroll-margin-top:180px}
+.era h3{font-size:1.02rem}
+.era .when{font-family:var(--mono);font-size:.68rem;color:var(--bronze);letter-spacing:.06em;text-transform:uppercase}
+.era.flash{background:var(--sunk)}
+ol.tl{list-style:none;margin:0;padding:0;position:relative}
+ol.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+ol.tl li{position:relative;padding:0 0 16px 30px;scroll-margin-top:180px}
+ol.tl li::before{content:"";position:absolute;left:1px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+ol.tl li.bk::before{background:var(--accent)}
+ol.tl li.flash{background:var(--sunk);border-radius:var(--r)}
+ol.tl .when{font-family:var(--mono);font-size:.7rem;color:var(--bronze);letter-spacing:.06em;text-transform:uppercase}
+ol.tl b{display:block;font-weight:700}
+ol.tl p{margin:2px 0 0;color:var(--muted);font-size:.93rem;max-width:72ch}
+.mapwrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:860px){.mapwrap{grid-template-columns:1fr}}
+.mapsvg{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.mapsvg svg{display:block;width:100%;height:auto}
+.mapsvg .land{fill:var(--sunk);stroke:var(--line);stroke-width:1.5}
+.mapsvg .sea{fill:var(--bg)}
+.mapsvg .reg{stroke:var(--surface);stroke-width:2;cursor:pointer;transition:opacity .2s}
+.mapsvg .reg:hover,.mapsvg .reg.on{opacity:1!important;stroke:var(--fg)}
+.mapsvg text{font-family:var(--display);font-size:13px;fill:var(--fg);pointer-events:none}
+.mapsvg text.sm{font-family:var(--body);font-size:11px;fill:var(--muted);font-style:italic}
+.mapsvg .river{fill:none;stroke:var(--accent);stroke-width:5;opacity:.55}
+.mapsvg .pin{cursor:pointer}
+.mapsvg .pin circle{fill:var(--bronze);stroke:var(--surface);stroke-width:2}
+.mapsvg .pin.on circle{fill:var(--accent);r:9}
+.places{display:grid;gap:8px}
+.place{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-size:.92rem;scroll-margin-top:180px;cursor:pointer;text-align:left;font:inherit;color:var(--fg);width:100%}
+.place b{font-family:var(--display);font-weight:500}
+.place.flash,.place.on{box-shadow:0 0 0 2px var(--accent)}
+.place .n{font-family:var(--mono);font-size:.68rem;color:var(--bronze);margin-right:6px}
+/* recaps */
+.recap{max-width:820px}
+.recap h3{font-size:1.35rem}
+.recap h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bronze);margin:18px 0 6px;font-weight:500}
+.recap ul{margin:0;padding-left:20px;display:grid;gap:5px}
+.recap p{margin:0 0 8px}
+.remember{margin-top:16px;padding:12px 14px;border:1px solid var(--accent);border-radius:var(--r);background:var(--sunk)}
+.remember h4{margin-top:0;color:var(--accent)}
+/* graph views */
+.split{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+@media (max-width:820px){.split{grid-template-columns:1fr}}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:auto;min-width:0;max-height:78vh}
+.stage svg{display:block}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;position:sticky;top:190px}
+.panel ul{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px;font-size:.93rem}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.85rem;color:var(--muted);margin-bottom:12px}
+.legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:5px;border-radius:2px}
+svg text{font-family:var(--body);fill:var(--fg)}
+.node{cursor:pointer}
+.node rect,.node circle{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.node.focus rect,.node.focus circle{stroke:var(--accent);stroke-width:3}
+.node.near rect,.node.near circle{stroke:var(--bronze);stroke-width:2}
+.node.dim,.edge.dim{opacity:.13}
+.node.dead text{fill:var(--muted)}
+.node:focus-visible rect{stroke:var(--accent);stroke-width:3}
+.edge{fill:none;stroke-width:1.8;transition:opacity .2s}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+button,select,input,.node{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.tabicon,.ts,.sheet-close{display:none}
+/* ---- Spoiler shield ---- */
+.spbtn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:.85rem;font-weight:500;color:var(--fg);background:var(--sunk);border:1px solid var(--line);border-radius:999px;padding:6px 12px;min-height:36px;cursor:pointer;align-self:center}
+.spbtn:hover{border-color:var(--accent)}
+.spbtn svg{width:17px;height:17px;flex-shrink:0}
+.sp-hidden{filter:blur(6px);cursor:pointer;user-select:none;-webkit-user-select:none;transition:filter .2s}
+.sp-hidden *{pointer-events:none}
+.sp-strip{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:.88rem;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r);padding:9px 12px;background:var(--surface)}
+.sp-strip b{color:var(--fg);font-weight:500}
+.sp-note{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:12px;padding:12px 14px;border:1px solid var(--line);border-left:3px solid var(--bad);border-radius:var(--r);background:var(--surface);font-size:.93rem}
+.sp-note .chip{min-height:40px}
+main .wrap.sp-wrap{padding-bottom:0}
+main .wrap.sp-wrap + .wrap{padding-top:14px}
+dialog.spd{border:1px solid var(--line);border-radius:12px;padding:0;max-width:480px;width:calc(100% - 32px);max-height:calc(100dvh - 32px);overflow:auto;background:var(--surface);color:var(--fg);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+dialog.spd::backdrop{background:rgba(10,8,22,.65)}
+.spd .in{padding:22px 22px 18px}
+.spd h2{margin:6px 0 8px}
+.spd p{margin:0 0 16px;color:var(--muted);font-size:.95rem}
+.spd .opts{display:grid;gap:7px}
+.spd .opts button{text-align:left;font:inherit;cursor:pointer;background:var(--bg);color:var(--fg);border:1.5px solid var(--line);border-radius:var(--r);padding:9px 14px}
+.spd .opts button:hover,.spd .opts button.cur{border-color:var(--accent)}
+.spd .opts b{display:block;font-weight:700}
+.spd .opts span{display:block;font-size:.84rem;color:var(--muted)}
+.spd .fine{margin:12px 0 0;font-size:.8rem}
+/* ---- The Reader's Atlas extras ---- */
+.atlas{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;align-self:center}
+.atlas:hover{color:var(--fg);border-color:var(--accent)}
+.atlas svg{width:16px;height:15px;flex-shrink:0}
+.atlas path{fill:var(--gold)}
+.atlas .moon-book{fill:var(--surface)}
+footer.site{border-top:1px solid var(--line);background:var(--stars),var(--surface);margin-top:10px}
+footer.site .wrap{padding-block:26px 34px;display:grid;gap:14px}
+footer.site h2{font-size:1.3rem}
+.buyrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.buy{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg);color:var(--fg);text-decoration:none;min-height:44px}
+.buy:hover{border-color:var(--accent)}
+.buy b{font-family:var(--display);font-weight:500;font-size:.98rem;line-height:1.25}
+.buy span{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.foot-actions{display:flex;flex-wrap:wrap;gap:10px}
+.socials{display:flex;flex-wrap:wrap;gap:10px}
+.kofi,.home,.social{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border-radius:var(--r);font-weight:500;text-decoration:none}
+.kofi{background:var(--accent);color:var(--accent-ink)}
+.kofi:hover{filter:brightness(1.1)}
+.home,.social{border:1px solid var(--line);color:var(--fg)}
+.home:hover,.social:hover{border-color:var(--accent)}
+.kofi svg,.home svg,.social svg{width:18px;height:18px;flex-shrink:0}
+.fine{margin:0;color:var(--muted);font-size:.86rem;max-width:80ch}
+.fine a{color:var(--accent)}
+/* ---- back to top ---- */
+.totop{position:fixed;z-index:24;right:max(20px,calc(env(safe-area-inset-right,0px) + 16px));bottom:calc(24px + env(safe-area-inset-bottom,0px));
+  display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:.85rem;font-weight:500;padding:10px 14px;min-height:44px;border-radius:999px;
+  border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.totop:hover{filter:brightness(1.1)}
+.totop svg{width:18px;height:18px}
+/* ---- phone ---- */
+@media (max-width:700px){
+  .brand small{display:none}
+  .brand h1{font-size:1.2rem}
+  .bar .wrap{padding-block:10px;gap:8px}
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--surface);border-top:1px solid var(--line);
+    padding:4px max(2px,env(safe-area-inset-right,0px)) calc(4px + env(safe-area-inset-bottom,0px)) max(2px,env(safe-area-inset-left,0px));gap:0;overflow:visible}
+  nav.tabs button{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;min-height:52px;font-size:.62rem;border-bottom:0}
+  nav.tabs button[aria-selected="true"]{color:var(--accent)}
+  .tabicon{display:block;width:22px;height:22px}
+  .tl-l{display:none} .ts{display:block}
+  main .wrap{padding-block:16px 24px}
+  .card,.era,ol.tl li,.place{scroll-margin-top:130px}
+  .grid,.grid.wide{grid-template-columns:1fr}
+  h2{font-size:1.35rem}
+  .chip{min-height:40px}
+  .controls select{flex:1 1 auto;min-height:40px}
+  .count{width:100%;margin-left:0}
+  .bookcard{grid-template-columns:44px 1fr;gap:12px}
+  .spine{min-height:80px;font-size:.85rem}
+  .pos li{grid-template-columns:96px 1fr}
+  .panel{position:fixed;left:0;right:0;bottom:calc(62px + env(safe-area-inset-bottom,0px));z-index:22;max-height:42vh;overflow:auto;
+    border-radius:14px 14px 0 0;border-bottom:0;box-shadow:0 -8px 28px rgba(0,0,0,.25);
+    padding:14px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+  .panel.idle{display:none}
+  .sheet-close{display:block;position:absolute;top:10px;right:max(12px,env(safe-area-inset-right,0px));font:inherit;font-size:.85rem;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--sunk);color:var(--fg)}
+  .legend{gap:8px 12px;font-size:.8rem}
+  .spbtn span{display:none}.spbtn{padding:6px 9px}
+  .atlas span{display:none}.atlas{padding:5px 8px}
+  .totop{bottom:calc(74px + env(safe-area-inset-bottom,0px));right:max(14px,calc(env(safe-area-inset-right,0px) + 10px));padding:10px 12px}
+  .totop span{display:none}
+  footer.site .wrap{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+}
+/* ---- Twilight theme overrides ---- */
+body{font-size:16px}
+h2,h3{font-weight:600}
+h2{font-size:1.85rem;letter-spacing:.01em}
+h3{font-size:1.28rem;letter-spacing:.01em}
+.brand h1{font-weight:600;letter-spacing:.03em}
+.brand h1 .thorn{color:var(--accent);font-style:italic}
+.eyebrow,.trope,.lbl,.agenda b,dl.kv dt,.pill,.count,.books,.gres .k,.order li .n,.rc-s,.spd .opt-h,ol.tl .when,.era .when,.place .n{letter-spacing:.12em}
+header.bar{border-bottom:1px solid var(--line);box-shadow:inset 0 -2px 0 var(--accent)}
+.spine{font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:.12em;min-height:104px;box-shadow:inset -6px 0 0 rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.06)}
+.spine.dark{background-image:radial-gradient(circle at 50% 22%,rgba(255,255,255,.14) 0 7px,transparent 8px)}
+.wip{border-left:3px solid var(--accent);border-style:solid;border-width:1px 1px 1px 3px;border-color:var(--line) var(--line) var(--line) var(--accent);color:var(--fg)}
+.wip a{color:var(--accent)}
+.seg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.seg .lbl{margin-right:4px}
+.rq-res{display:grid;gap:8px;margin:-6px 0 16px}
+.rq-res button{text-align:left;font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:9px 12px;cursor:pointer}
+.rq-res button:hover{border-color:var(--accent)}
+.rq-res .s{display:block;color:var(--muted);font-size:.88rem}
+.town .lm li::before{background:var(--wc,var(--gold))}
+.mapsvg .mtn{fill:var(--line);opacity:.9}
+.mapsvg .water{fill:var(--bg)}
+.mapsvg .road{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:6 5;opacity:.6}
+.mapsvg .treaty{fill:none;stroke:var(--bronze);stroke-width:2.5;stroke-dasharray:2 6;stroke-linecap:round}
+.mapsvg .pin circle{fill:var(--accent)}
+.mapsvg .pin.on circle{fill:var(--bronze)}
+.mapsvg .pin text{font-family:var(--body);font-weight:700}
+.cover{position:relative;width:96px;flex-shrink:0;align-self:start}
+.cover .spine{min-height:144px;aspect-ratio:2/3;border-radius:4px}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:4px;box-shadow:0 6px 18px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.08);background:var(--sunk);opacity:0;transition:opacity .3s}
+.cover.has-img img{opacity:1}
+.bookcard{grid-template-columns:96px 1fr}
+@media (max-width:700px){.cover{width:76px}.cover .spine{min-height:114px}.bookcard{grid-template-columns:76px 1fr}}
+.order li.dim{opacity:.35}
+.subnav{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.92rem;margin:-6px 0 14px}
+.afar{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-top:10px}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="brand"><h1><span class="pre">The</span> Twilight <span class="thorn">Reader's Guide</span></h1><small>Unofficial · Work in progress · 7 books · Forks, WA</small><a class="atlas" href="https://readersatlas.com" aria-label="The Reader's Atlas: more character guides"><svg viewBox="0 0 140 130" aria-hidden="true"><path d="M28 60 A46 46 0 1 0 112 60 A38 38 0 1 1 28 60 Z"/><path class="moon-book" d="M36 74 C48 68 60 69 70 76 C80 69 92 68 104 74 L104 100 C92 94 80 95 70 102 C60 95 48 94 36 100 Z"/><path d="M70 4 L75 15 L86 20 L75 25 L70 36 L65 25 L54 20 L65 15 Z"/></svg><span>The Reader's Atlas</span></a><button class="spbtn" id="sp-open" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M4 4l16 16"/></svg><span>Spoilers</span></button></div>
+    <div class="gsearch">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="gq" type="search" placeholder="Search everything: characters, covens, places, events…" autocomplete="off" aria-label="Search everything">
+      <div class="gres" id="gres" hidden></div>
+    </div>
+    <nav class="tabs" role="tablist" id="tabs"></nav>
+  </div>
+</header>
+
+<button class="totop" id="totop" type="button" aria-label="Back to top" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg><span>Back to top</span></button>
+<main><div class="wrap sp-wrap"><div class="sp-strip" id="sp-strip"></div></div><div class="wrap" id="view"></div></main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">The Twilight Saga · Companion novels</p>
+      <h2>Read the books</h2>
+      <p class="fine" style="margin-top:4px">7 books, the four-book saga and three companions, in reading order, each with a link to buy.</p>
+    </div>
+    <div><button type="button" class="buybtn ghost" id="readbooks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>Go to the Book Guide</button></div>
+    <div class="foot-actions">
+      <a class="kofi" href="https://ko-fi.com/readersatlas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 4v1.5M11.5 3v2.5"/></svg>Buy me a coffee</a>
+      <div class="socials"><a class="social" href="https://www.instagram.com/readers.atlas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>@readers.atlas</a>
+      <a class="social" href="https://www.tiktok.com/@readers.atlas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.8 2.3 4.6 5 5"/></svg>TikTok</a></div>
+      <a class="home" href="https://readersatlas.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>More guides at The Reader's Atlas</a>
+    </div>
+    <p class="fine">Fan-made guide, not affiliated with Stephenie Meyer or her publishers (Little, Brown Books for Young Readers or Atom). All characters and worlds belong to their creators.</p>
+    <p class="fine">Some book links may be affiliate links, which means I may earn a small commission at no extra cost to you.</p>
+    <p class="fine">Part of <a href="https://readersatlas.com">The Reader's Atlas</a> · <a href="https://www.instagram.com/readers.atlas" target="_blank" rel="noopener">@readers.atlas</a> on Instagram · <a href="https://www.tiktok.com/@readers.atlas" target="_blank" rel="noopener">@readers.atlas</a> on TikTok · <a href="https://ko-fi.com/readersatlas" target="_blank" rel="noopener">Ko-fi</a></p>
+  </div>
+<dialog class="spd" id="spd" aria-labelledby="spd-t">
+  <div class="in">
+    <p class="eyebrow">Spoiler warning</p>
+    <h2 id="spd-t">How far have you read?</h2>
+    <p>This guide covers the four Twilight Saga books and the three companion novels. Pick the book you're on in the reading order below and I'll blur anything from later books. Tap a blurred item to peek, or change this any time with the eye button at the top. Skipping the companions? Pick your place in the saga anyway.</p>
+    <div class="opts" id="spd-opts"></div>
+    <p class="fine">Your choice is remembered on this device.</p>
+  </div>
+</dialog>
+</footer>
+
+<script>
+/* ============================================================
+   DATA
+   Book codes, in recommended reading order:
+   TW Twilight · NM New Moon · EC Eclipse · BT The Short Second Life of Bree Tanner
+   BD Breaking Dawn · MS Midnight Sun · LD Life and Death
+   ============================================================ */
+const BSER={
+ saga:{name:"The Twilight Saga",col:"#8e1b22"},
+ comp:{name:"Companion novels",col:"#4f6f7e"}
+};
+/* Factions: who a character belongs to (colours the cast, map and trees) */
+const FACT={
+ human:{name:"Humans of Forks",col:"#5f7a8a",d:"Forks High, the police chief's house and the town around them"},
+ cullen:{name:"The Cullens",col:"#b8913a",d:"Carlisle's 'vegetarian' coven, who live on animal blood"},
+ wolf:{name:"The Quileute & the pack",col:"#8a5a2b",d:"The tribe at La Push and its shape-shifting protectors"},
+ volturi:{name:"The Volturi",col:"#7d1220",d:"The vampire royalty of Volterra, Italy, who enforce the rules"},
+ nomad:{name:"Nomads & newborns",col:"#5d5f73",d:"James's coven, Victoria's army and other vampires passing through"},
+ denali:{name:"The Denali coven",col:"#5a8fae",d:"The Cullens' 'cousins' in Alaska, who also hunt animals"},
+ allies:{name:"Witnesses & allies",col:"#4f7d5b",d:"The vampires who stand with the Cullens in Breaking Dawn"},
+ ld:{name:"Life and Death",col:"#7a5fa0",d:"The gender-swapped retelling of Twilight"}
+};
+const FCOL=Object.fromEntries(Object.entries(FACT).map(([k,v])=>[k,v.col]));
+
+const BOOKLIST=[
+ {c:"TW",isbn:"9780316160179",s:"saga",n:"1",title:"Twilight",year:2005,col:"#7a1419",sp:-1,
+  trope:"Human meets vampire · forbidden love · new girl in town",
+  plot:"Seventeen-year-old Bella Swan swaps sunny Phoenix for her dad's house in rainy Forks, Washington. At school she can't stop noticing the Cullens, five pale, impossibly beautiful foster kids who keep to themselves. Edward Cullen seems to hate her on sight. Then he saves her life in a way no human could, and she sets out to find out what he really is.",
+  cast:["bella","edward","charlie","jacob","alice","carlisle","james"]},
+ {c:"NM",isbn:"9780316160193",s:"saga",n:"2",title:"New Moon",year:2006,col:"#b4472a",sp:0,
+  trope:"Heartbreak · best friend · werewolves",
+  plot:"After a disastrous eighteenth birthday party, Edward decides he's too dangerous for Bella and the Cullens leave Forks. Bella falls apart. Her friendship with Jacob Black slowly pulls her back, until Jacob starts disappearing too, and the Quileute legends turn out to be about more than vampires.",
+  cast:["bella","edward","jacob","alice","sam","victoria","aro"]},
+ {c:"EC",isbn:"9780316160209",s:"saga",n:"3",title:"Eclipse",year:2007,col:"#5a1430",sp:1,
+  trope:"Love triangle · vampires and wolves allied · the choice",
+  plot:"Seattle is in the grip of a string of mysterious killings, and Victoria is still out there. As graduation approaches, Bella has a choice to make: Edward and the vampire life she's asked for, or Jacob and a human one. Then the Cullens and the wolves are forced to fight on the same side.",
+  cast:["bella","edward","jacob","victoria","riley","jasper","rosalie","seth"]},
+ {c:"BT",isbn:"9780316125581",s:"comp",n:"Novella",title:"The Short Second Life of Bree Tanner",abbr:"Bree Tanner",year:2010,col:"#6d2b4a",sp:2,
+  trope:"Villain's-eye view · newborn vampire · told from the other side",
+  plot:"Fifteen-year-old Bree is a few months into life as a vampire, one of dozens of newborns kept in a Seattle basement and told only what they need to know. As their leader, Riley, readies them for an attack, Bree and her friend Diego start to suspect they've been lied to.",
+  cast:["bree","diego","riley","fred","victoria"]},
+ {c:"BD",isbn:"9780316067928",s:"saga",n:"4",title:"Breaking Dawn",year:2008,col:"#2a2a2c",dark:1,sp:2,
+  trope:"Wedding · the impossible · the final stand",
+  plot:"Bella is about to become Mrs. Edward Cullen and, soon after, a vampire. But the honeymoon brings a twist nobody thought possible, putting Bella's life in danger, splitting the wolf pack, and drawing the attention of the most powerful vampires in the world.",
+  cast:["bella","edward","jacob","renesmee","rosalie","aro","alice","leah"]},
+ {c:"MS",isbn:"9780316707046",s:"comp",n:"Retelling",title:"Midnight Sun",year:2020,col:"#a3202f",sp:-1,
+  trope:"Twilight from Edward's side · mind reading · temptation",
+  plot:"The events of Twilight told by Edward. He can hear every thought in Forks, except the new girl's, and her scent is the most tempting thing he's ever smelled. Falling for Bella means fighting himself every second he's near her.",
+  cast:["edward","bella","alice","carlisle","rosalie","jasper","james"]},
+ {c:"LD",isbn:"9780316505451 9780316268394",s:"comp",n:"Reimagined",title:"Life and Death: Twilight Reimagined",abbr:"Life and Death",year:2015,col:"#3e4a63",sp:-1,
+  trope:"Gender-swapped retelling · new ending",
+  plot:"Released for Twilight's tenth anniversary, this retelling swaps the genders of almost every character. Beaufort Swan moves to Forks and meets the mysterious Edythe Cullen. The story follows Twilight closely, until an ending that goes somewhere very different.",
+  cast:["beau","edythe","jules","joss"]}
+];
+const BIDX=Object.fromEntries(BOOKLIST.map((b,i)=>[b.c,i]));
+const BOOKS=Object.fromEntries(BOOKLIST.map(b=>[b.c,b.abbr||b.title]));
+const UPCOMING={title:"More Twilight books",date:"No date announced",note:"Stephenie Meyer has said she has at least two more Twilight-world books outlined, picking up after Breaking Dawn. As of late 2026 there's no title or release date, so treat any 'release date' you see online as a rumour."};
+
+/* Characters
+   s = faction · role: lead | sup | bad · books = first appearance · from = where they're from (fromT = place card)
+   loveB / twB / stB / rev / deadB = book where that detail is revealed */
+const CHARS=[
+ /* ---- Humans of Forks ---- */
+ {id:"bella",name:"Bella Swan",aka:"Isabella Marie Swan",s:"human",role:"lead",books:"TW",from:"Phoenix, Arizona; moves to Forks",fromT:"town-phx",
+  job:"High school student; part-time at Newton's Olympic Outfitters",
+  feat:"Pale, with long dark-brown hair and brown eyes. Famously clumsy and quick to blush.",
+  about:"Quiet, observant and stubborn, and more of a grown-up than her mum. Reads the classics. Her mind is silent to Edward, an early hint of what she'll become.",
+  love:"Edward Cullen",loveB:"TW",age:"17 in Twilight; turns 18 in New Moon",
+  twist:"Nearly dies giving birth to Renesmee and wakes up a vampire. Her gift is a mental shield, which she learns to stretch over everyone she loves.",twB:"BD",
+  story:"Marries Edward after graduation and has unusual self-control from her first day as a vampire. Her shield is what stops the Volturi's gifts from working on the Cullens' witnesses.",stB:"BD",
+  conn:"Edward's wife; Charlie and Renée's daughter; Jacob's best friend"},
+ {id:"charlie",name:"Charlie Swan",aka:"Chief of Police, Forks",s:"human",role:"sup",books:"TW",from:"Forks, Washington",fromT:"town-forks",
+  job:"Chief of police",feat:"Moustache, police cruiser, fishing gear and a lot of flannel.",
+  about:"A man of very few words who loves his daughter enormously and can't cook. Billy Black's best friend.",
+  love:"Renée (they divorced when Bella was a baby); later Sue Clearwater",loveB:"BD",age:"About 40",
+  twist:"Jacob phases into a wolf in front of him so Bella doesn't have to vanish from his life. Charlie decides he only wants to know what he absolutely needs to.",twB:"BD",
+  story:"Stays part of Bella and Renesmee's lives, and grows close to Sue Clearwater.",stB:"BD",conn:"Bella's dad; Billy's best friend"},
+ {id:"renee",name:"Renée Dwyer",aka:"Bella's mum",s:"human",role:"sup",books:"TW",from:"Phoenix; later Jacksonville, Florida",fromT:"town-jax",
+  job:"Teacher",feat:"Looks like Bella, with short hair and laugh lines.",
+  about:"Loving, scatterbrained and impulsive, with a new hobby every month. Bella has been the sensible one in their house for years.",
+  love:"Phil Dwyer, a minor-league baseball player",loveB:"TW",age:"Late 30s",
+  twist:"James lures Bella to Phoenix by making her believe he's holding Renée hostage, using an old home video.",twB:"TW",
+  story:"Never learns the truth about vampires.",stB:"BD",conn:"Bella's mum; Phil's wife"},
+ {id:"mike",name:"Mike Newton",aka:"The golden retriever of Forks High",s:"human",role:"sup",books:"TW",from:"Forks",fromT:"town-forks",
+  job:"Student; works at his parents' shop, Newton's Olympic Outfitters",feat:"Baby-faced, with spiky blond hair.",
+  about:"Friendly and persistent. Has a crush on Bella from her first day and makes no secret of disliking Edward.",
+  love:"Bella (one-sided); later Jessica Stanley",loveB:"NM",age:"17",
+  twist:"Gets Bella her job at his family's outdoor shop, then spends a double date to the movies being sick.",twB:"NM",story:"",conn:"Bella's classmate"},
+ {id:"jessica",name:"Jessica Stanley",aka:"Bella's first friend at school",s:"human",role:"sup",books:"TW",from:"Forks",fromT:"town-forks",
+  job:"Student",feat:"Short, with curly hair and a lot to say.",about:"Chatty and gossipy, and a little jealous of the attention the new girl gets.",
+  love:"Mike Newton",loveB:"NM",age:"17",twist:"",story:"",conn:"Bella's classmate"},
+ {id:"angela",name:"Angela Weber",aka:"The kind one",s:"human",role:"sup",books:"TW",from:"Forks",fromT:"town-forks",
+  job:"Student",feat:"Tall and quiet, with glasses.",about:"Gentle and discreet, and the school friend Bella trusts most because she never pries.",
+  love:"Ben Cheney",loveB:"TW",age:"17",twist:"Her father, the town's minister, marries Bella and Edward.",twB:"BD",story:"",conn:"Bella's friend"},
+ {id:"tyler",name:"Tyler Crowley",aka:"The van driver",s:"human",role:"sup",books:"TW",from:"Forks",fromT:"town-forks",
+  job:"Student",feat:"",about:"A classmate who becomes overly attentive to Bella after nearly killing her.",
+  love:"",age:"17",twist:"His van skids on ice in the school car park and almost crushes Bella. Edward, who was across the lot, stops it with his hand.",twB:"TW",story:"",conn:"Bella's classmate"},
+
+ /* ---- The Cullens ---- */
+ {id:"edward",name:"Edward Cullen",aka:"Edward Anthony Masen",s:"cullen",role:"lead",books:"TW",from:"Chicago, Illinois (born 1901)",fromT:"town-forks",
+  job:"Forever a high-school student; plays and composes for piano",
+  feat:"Untidy bronze hair, topaz eyes that turn black when he's thirsty, and skin that glitters in the sun. Drives a silver Volvo.",
+  about:"Hears the thoughts of everyone nearby, except Bella. Old-fashioned, intense and convinced he's a monster without a soul.",
+  love:"Bella Swan",loveB:"TW",age:"Frozen at 17; born in 1901",
+  twist:"Leaves Bella to keep her safe, then believes she's died and asks the Volturi to end his life. Bella reaches him in Volterra just in time.",twB:"NM",
+  story:"Marries Bella and becomes a father, able to hear his daughter's thoughts before she's born.",stB:"BD",conn:"Bella's husband; Carlisle's first companion"},
+ {id:"alice",name:"Alice Cullen",aka:"Mary Alice Brandon",s:"cullen",role:"sup",books:"TW",from:"Biloxi, Mississippi (born 1901)",fromT:"town-forks",
+  job:"Poses as a student; the family's party planner and stylist",feat:"Tiny and pixie-like, with short, spiky black hair.",
+  about:"Sees the future as it stands on people's current decisions, so her visions shift. She can't see the wolves at all. Bubbly, loyal and Bella's best friend.",
+  love:"Jasper Hale",loveB:"TW",age:"Frozen at about 19",
+  twist:"She has no memory of her human life. It turns out she was locked in an asylum for her visions and turned by a vampire who was protecting her from James.",twB:"TW",
+  story:"Leaves just before the Volturi arrive, and comes back at the last moment with the proof that saves the family.",stB:"BD",conn:"Jasper's wife; Bella's best friend"},
+ {id:"jasper",name:"Jasper Hale",aka:"Jasper Whitlock",s:"cullen",role:"sup",books:"TW",from:"Texas (born 1843)",fromT:"town-forks",
+  job:"Poses as Rosalie's twin; once a major in the Confederate army",feat:"Tall and honey-blond, covered in crescent-shaped bite scars.",
+  about:"Feels and steers the emotions of the people around him. The newest to the animal-only diet, so he finds it hardest.",
+  love:"Alice Cullen",loveB:"TW",age:"Frozen at about 20",
+  twist:"At Bella's 18th birthday party, a paper cut sends him lunging for her, which is what drives Edward to leave Forks.",twB:"NM",
+  story:"Shares his past in Maria's newborn armies in the South, then trains the Cullens and the wolves to fight Victoria's army.",stB:"EC",conn:"Alice's husband; Rosalie's 'twin'"},
+ {id:"rosalie",name:"Rosalie Hale",aka:"Rosalie Lillian Hale",s:"cullen",role:"sup",books:"TW",from:"Rochester, New York (born 1915)",fromT:"town-forks",
+  job:"Poses as a student; the family's car mechanic",feat:"Tall, golden-haired and breathtakingly beautiful.",
+  about:"Cold to Bella for most of the saga, because Bella would throw away the human life Rosalie lost, especially the chance of having children.",
+  love:"Emmett Cullen",loveB:"TW",age:"Frozen at 18",
+  twist:"In 1933 her fiancé, Royce King, and his friends attacked her and left her for dead. Carlisle turned her, and she took revenge on every one of them.",twB:"EC",
+  story:"Becomes Bella's fiercest protector during the pregnancy, and a devoted aunt.",stB:"BD",conn:"Emmett's wife"},
+ {id:"emmett",name:"Emmett Cullen",aka:"Emmett McCarty",s:"cullen",role:"sup",books:"TW",from:"Tennessee (born 1915)",fromT:"town-forks",
+  job:"Poses as a student",feat:"Huge and muscular, with dark curly hair and dimples.",about:"The family's cheerful muscle. Loves a fight, a bet and teasing Bella.",
+  love:"Rosalie Hale",loveB:"TW",age:"Frozen at 20",
+  twist:"Rosalie found him mauled by a bear in 1935 and carried him over a hundred miles to Carlisle.",twB:"TW",
+  story:"Picks an arm-wrestling match with newborn Bella and loses.",stB:"BD",conn:"Rosalie's husband"},
+ {id:"carlisle",name:"Carlisle Cullen",aka:"Dr. Cullen, head of the family",s:"cullen",role:"sup",books:"TW",from:"London, England (born in the 1640s)",fromT:"town-forks",
+  job:"Doctor at Forks Hospital",feat:"Blond and film-star handsome; looks about 23.",
+  about:"Spent centuries building enough control to work around human blood. The first vampire to live on animals, and the family's moral centre. Once lived with the Volturi.",
+  love:"Esme Cullen",loveB:"TW",age:"Over 360; frozen at 23",
+  twist:"The son of a pastor who hunted vampires, he was bitten leading a hunt in London and hid in a cellar while he changed.",twB:"TW",
+  story:"Calls on friends around the world to stand as witnesses against the Volturi.",stB:"BD",conn:"Esme's husband; created Edward, Esme, Rosalie and Emmett"},
+ {id:"esme",name:"Esme Cullen",aka:"Esme Anne Platt",s:"cullen",role:"sup",books:"TW",from:"Columbus, Ohio (born 1895)",fromT:"town-forks",
+  job:"Restores old houses",feat:"Heart-shaped face and soft caramel-coloured hair.",about:"The family's mother in every sense, with a huge capacity to love.",
+  love:"Carlisle Cullen",loveB:"TW",age:"Frozen at 26",
+  twist:"Fled an abusive marriage, then lost her newborn son and jumped from a cliff. Carlisle, who had treated her years before, found her and changed her.",twB:"TW",
+  story:"Carlisle gave her an island off Brazil, Isle Esme, where Bella and Edward honeymoon. She also restores a cottage in the woods for them.",stB:"BD",conn:"Carlisle's wife; mother to the Cullens"},
+ {id:"renesmee",name:"Renesmee Cullen",aka:"Nessie",s:"cullen",role:"sup",books:"BD",from:"Forks",fromT:"town-forks",
+  job:"Child",feat:"Bronze curls like Edward's and Bella's brown eyes. Grows startlingly fast.",
+  about:"Half-human, half-vampire. Shows people her thoughts by touching them. Her name blends Renée and Esme; her middle name, Carlie, blends Carlisle and Charlie.",
+  love:"Jacob Black imprints on her",loveB:"BD",age:"Newborn; looks about three by the end, fully grown in roughly seven years",
+  twist:"Irina mistakes her for an 'immortal child', a crime the Volturi punish with death, and the Volturi come for the whole family.",twB:"BD",story:"",conn:"Bella and Edward's daughter"},
+
+ /* ---- The Quileute & the pack ---- */
+ {id:"jacob",name:"Jacob Black",aka:"Jake",s:"wolf",role:"lead",books:"TW",from:"La Push (Quileute reservation)",fromT:"town-lapush",
+  job:"Student and mechanic; later Alpha of his own pack",
+  feat:"Russet skin, long black hair (cut short once he phases) and a huge grin. Shoots up to giant size almost overnight.",
+  about:"Warm, funny and stubborn: Bella's sun during the worst months of her life. Runs at about 108°F.",
+  love:"Bella (unrequited); then imprints on Renesmee",loveB:"BD",age:"15 in Twilight; 16–17 later",
+  twist:"Becomes a wolf, a huge russet-brown shape-shifter, and learns that the Cullens are exactly what the tribe's legends warned about.",twB:"NM",
+  story:"He's the rightful Alpha by descent. He breaks from Sam to protect Bella, forms his own pack, and imprints on Renesmee the moment he sees her.",stB:"BD",conn:"Billy's son; Bella's best friend"},
+ {id:"billy",name:"Billy Black",aka:"Quileute elder",s:"wolf",role:"sup",books:"TW",from:"La Push",fromT:"town-lapush",
+  job:"Tribal elder",feat:"Uses a wheelchair; long black hair.",about:"Keeper of the old stories and the treaty with the Cullens. Charlie's best friend, quietly watching over Bella.",
+  love:"Sarah Black, who died in a car accident",loveB:"NM",age:"About 40",
+  twist:"He knows exactly what the Cullens are, and warns Charlie away from them without saying why.",twB:"TW",story:"",conn:"Jacob's dad; Charlie's best friend"},
+ {id:"sam",name:"Sam Uley",aka:"Alpha of the pack",s:"wolf",role:"sup",books:"NM",from:"La Push",fromT:"town-lapush",
+  job:"Alpha of the Quileute wolves",feat:"Big and serious; a black wolf.",about:"The first of his generation to phase, with no one to explain it. Carries the pack and the treaty on his shoulders.",
+  love:"Emily Young",loveB:"NM",age:"About 20",
+  twist:"He loved Leah Clearwater until he imprinted on her cousin Emily, and once lost control near Emily and scarred her face.",twB:"NM",
+  story:"Splits with Jacob over what to do about Bella's pregnancy; the two packs stand together against the Volturi.",stB:"BD",conn:"Emily's fiancé; Leah's ex"},
+ {id:"emily",name:"Emily Young",aka:"Sam's fiancée",s:"wolf",role:"sup",books:"NM",from:"Makah reservation; lives in La Push",fromT:"town-lapush",
+  job:"Keeps the pack fed",feat:"Beautiful, with three long scars down one side of her face.",about:"Warm and motherly; her kitchen is the pack's hangout.",
+  love:"Sam Uley",loveB:"NM",age:"About 20",twist:"",story:"",conn:"Sam's fiancée; Leah's cousin"},
+ {id:"leah",name:"Leah Clearwater",aka:"The only she-wolf",s:"wolf",role:"sup",books:"NM",from:"La Push",fromT:"town-lapush",
+  job:"Wolf",feat:"A slim grey wolf; striking and sharp-tongued.",about:"Bitter after Sam left her for Emily, and sick of being stuck inside his head through the pack mind.",
+  love:"Sam Uley, before Emily",loveB:"NM",age:"About 20",
+  twist:"The first female wolf in Quileute history. Her first transformation came the same night her father died.",twB:"BD",
+  story:"Joins Jacob's breakaway pack to escape Sam, and becomes his second-in-command.",stB:"BD",conn:"Seth's sister; Sam's ex"},
+ {id:"seth",name:"Seth Clearwater",aka:"The youngest wolf",s:"wolf",role:"sup",books:"EC",from:"La Push",fromT:"town-lapush",
+  job:"Wolf",feat:"Lanky and sandy-coloured as a wolf.",about:"Sunny and fearless; the one wolf who actually likes the Cullens, especially Edward.",
+  love:"",age:"15",twist:"Helps Edward destroy Victoria and Riley at the mountain campsite.",twB:"EC",
+  story:"The first to join Jacob's breakaway pack.",stB:"BD",conn:"Leah's brother; Edward's friend"},
+ {id:"sue",name:"Sue Clearwater",aka:"Tribal council member",s:"wolf",role:"sup",books:"NM",from:"La Push",fromT:"town-lapush",
+  job:"Takes her late husband's seat on the tribal council",feat:"",about:"Steady and protective of her children and of Charlie.",
+  love:"Harry Clearwater; later Charlie Swan",loveB:"BD",age:"40s",twist:"",story:"",conn:"Leah and Seth's mum"},
+ {id:"harry",name:"Harry Clearwater",aka:"Charlie's fishing buddy",s:"wolf",role:"sup",books:"TW",from:"La Push",fromT:"town-lapush",status:"dead",deadB:"NM",
+  job:"Tribal elder and fisherman",feat:"",about:"An elder who knows the legends, and Charlie's regular fishing partner.",
+  love:"Sue Clearwater",loveB:"NM",age:"40s",twist:"Dies of a heart attack, brought on by the shock of seeing his daughter Leah phase.",twB:"BD",story:"",conn:"Leah and Seth's dad"},
+ {id:"paul",name:"Paul",aka:"The hothead",s:"wolf",role:"sup",books:"NM",from:"La Push",fromT:"town-lapush",
+  job:"Wolf",feat:"Silver-grey wolf.",about:"Quick-tempered; nearly phases at Bella the first time they meet.",
+  love:"Rachel Black, Jacob's sister (he imprints on her)",loveB:"BD",age:"About 18",twist:"",story:"",conn:"Jacob's future brother-in-law"},
+ {id:"embry",name:"Embry Call",aka:"Jacob's best friend",s:"wolf",role:"sup",books:"NM",from:"La Push",fromT:"town-lapush",
+  job:"Wolf",feat:"Grey wolf with dark spots.",about:"Easygoing and loyal to Jacob.",love:"",age:"16",
+  twist:"His mother is from the Makah tribe and his father is unknown, so he must be half-brother to one of the elders' sons.",twB:"EC",
+  story:"Joins Jacob's pack.",stB:"BD",conn:"Jacob's friend"},
+ {id:"quil",name:"Quil Ateara",aka:"Jacob's best friend",s:"wolf",role:"sup",books:"NM",from:"La Push",fromT:"town-lapush",
+  job:"Wolf",feat:"Chocolate-brown wolf.",about:"Jokey and devoted. His grandfather Old Quil sits on the council.",
+  love:"Imprints on two-year-old Claire, and becomes the world's most dedicated babysitter",loveB:"EC",age:"16",twist:"",story:"Joins Jacob's pack.",stB:"BD",conn:"Jacob's friend"},
+
+ /* ---- The Volturi ---- */
+ {id:"aro",name:"Aro",aka:"Leader of the Volturi",s:"volturi",role:"bad",books:"NM",from:"Volterra, Italy",fromT:"town-volterra",
+  job:"Rules the vampire world with Caius and Marcus",feat:"Long black hair, papery skin and milky-red eyes.",
+  about:"Reads every thought you've ever had with a single touch. Charming, curious and ruthless; he collects gifted vampires.",
+  love:"Sulpicia",age:"Around 3,000 years",
+  twist:"Comes to destroy the Cullens over a crime that never happened, really hoping to claim Alice, Edward and Bella. Alice's vision of the battle makes him back down.",twB:"BD",story:"",conn:"Volturi leader"},
+ {id:"caius",name:"Caius",aka:"Volturi ruler",s:"volturi",role:"bad",books:"NM",from:"Volterra, Italy",fromT:"town-volterra",
+  job:"Rules with Aro and Marcus",feat:"Snow-white hair.",about:"The cruellest of the three. Hates werewolves, the real 'Children of the Moon', and wants any excuse for a fight.",
+  love:"Athenodora",age:"Ancient",twist:"Destroys Irina on the spot for her false accusation.",twB:"BD",story:"",conn:"Volturi ruler"},
+ {id:"marcus",name:"Marcus",aka:"The bored one",s:"volturi",role:"bad",books:"NM",from:"Volterra, Italy",fromT:"town-volterra",
+  job:"Rules with Aro and Caius",feat:"Black hair; looks bored to the bone.",about:"Sees the bonds between people and how strong they are.",
+  love:"Didyme, Aro's sister (deceased)",age:"Ancient",
+  twist:"His wife's death is why he's so empty. Fans and the official guide point to Aro arranging it, to keep Marcus's gift in Volterra.",twB:"BD",story:"",conn:"Aro's brother-in-law"},
+ {id:"jane",name:"Jane",aka:"Volturi guard",s:"volturi",role:"bad",books:"NM",from:"Volterra, Italy",fromT:"town-volterra",
+  job:"Elite Volturi guard",feat:"Looks about twelve, with an angelic face and light-brown hair.",about:"Makes you feel unbearable pain just by looking at you. Aro's favourite.",
+  love:"",age:"Frozen at about 12; centuries old",twist:"Her gift does nothing to Bella, which fascinates Aro and infuriates Jane.",twB:"NM",
+  story:"Has Bree Tanner destroyed after the newborn battle, despite Carlisle's plea.",stB:"EC",conn:"Alec's twin"},
+ {id:"alec",name:"Alec",aka:"Volturi guard",s:"volturi",role:"bad",books:"NM",from:"Volterra, Italy",fromT:"town-volterra",
+  job:"Elite Volturi guard",feat:"Jane's twin; dark-haired and boyish.",about:"Cuts off every sense, so you can't see, hear or feel anything.",
+  love:"",age:"Frozen as a teen",twist:"",story:"",conn:"Jane's twin"},
+ {id:"demetri",name:"Demetri",aka:"The Volturi's tracker",s:"volturi",role:"bad",books:"NM",from:"Volterra, Italy",fromT:"town-volterra",
+  job:"Tracker",feat:"",about:"Can find anyone, anywhere, by the 'tenor' of their mind. Except Bella.",love:"",age:"",twist:"",story:"",conn:"Volturi guard"},
+ {id:"felix",name:"Felix",aka:"Volturi muscle",s:"volturi",role:"bad",books:"NM",from:"Volterra, Italy",fromT:"town-volterra",
+  job:"Guard",feat:"Enormous.",about:"The guard who does the heavy lifting, usually literally.",love:"",age:"",twist:"",story:"",conn:"Volturi guard"},
+
+ /* ---- Nomads & newborns ---- */
+ {id:"james",name:"James",aka:"The tracker",s:"nomad",role:"bad",books:"TW",from:"Nomad",fromT:"town-phx",
+  job:"Tracker",feat:"Ordinary-looking, with light-brown hair in a ponytail.",about:"Treats hunting as sport: the harder the prey is to catch, the better.",
+  love:"Victoria",loveB:"TW",age:"Unknown",
+  twist:"Lures Bella to her old ballet studio in Phoenix and bites her. The Cullens destroy him.",twB:"TW",
+  story:"Decades earlier he hunted a young Alice, which is how she came to be turned.",stB:"TW",conn:"Victoria's mate"},
+ {id:"victoria",name:"Victoria",aka:"James's mate",s:"nomad",role:"bad",books:"TW",from:"Nomad",fromT:"town-seattle",
+  job:"Nomad with a gift for escape",feat:"Wild, flame-red hair and a cat-like way of moving.",about:"After James dies she wants Edward to lose his mate, the way she lost hers.",
+  love:"James; later uses Riley",loveB:"EC",age:"Unknown",
+  twist:"Builds an army of newborn vampires in Seattle to overwhelm the Cullens.",twB:"EC",
+  story:"Edward destroys her at the mountain campsite, with Seth's help.",stB:"EC",conn:"James's mate"},
+ {id:"laurent",name:"Laurent",aka:"The third nomad",s:"nomad",role:"bad",books:"TW",from:"Nomad; French",fromT:"town-denali",
+  job:"Nomad",feat:"Olive skin, black dreadlocks and a French accent.",about:"The smoothest of the three nomads. Leaves James to try the Denali coven's way of life.",
+  love:"Irina of the Denali coven",loveB:"EC",age:"Unknown",
+  twist:"Comes back to Forks on Victoria's behalf and finds Bella alone in the meadow. The wolves kill him.",twB:"NM",story:"",conn:"James and Victoria's companion"},
+ {id:"riley",name:"Riley Biers",aka:"Victoria's lieutenant",s:"nomad",role:"bad",books:"EC",from:"Seattle",fromT:"town-seattle",rev:"EC",
+  job:"Commands the newborn army",feat:"Sandy-haired, blue-eyed when human.",about:"A missing Seattle man turned by Victoria, who believes she loves him.",
+  love:"Victoria",loveB:"EC",age:"About 19",twist:"He's the intruder who steals Bella's clothes so the newborns can learn her scent.",twB:"EC",
+  story:"Destroyed by Edward and Seth.",stB:"EC",conn:"Victoria's creation"},
+ {id:"bree",name:"Bree Tanner",aka:"Newborn vampire",s:"nomad",role:"lead",books:"EC",from:"Seattle",fromT:"town-seattle",
+  job:"Newborn in Victoria's army",feat:"Small and quick; red-eyed.",about:"A runaway who was turned a few months ago. Good at staying unnoticed, which keeps her alive in the basement.",
+  love:"A growing bond with Diego",loveB:"BT",age:"15",
+  twist:"Surrenders to Carlisle after the battle. Jane has her destroyed anyway.",twB:"EC",
+  story:"Her own novella shows the army from the inside, and how Riley lied to all of them.",stB:"BT",conn:"Diego's friend"},
+ {id:"diego",name:"Diego",aka:"Bree's friend",s:"nomad",role:"sup",books:"BT",from:"Seattle",fromT:"town-seattle",
+  job:"Newborn in Victoria's army",feat:"Curly dark hair.",about:"Clever and curious, one of the oldest newborns.",love:"Bree",loveB:"BT",age:"About 18",
+  twist:"Finds out sunlight doesn't kill them: Riley's story was a lie. He tells Riley, and disappears.",twB:"BT",story:"",conn:"Bree's friend"},
+ {id:"fred",name:"Fred",aka:"The one nobody looks at",s:"nomad",role:"sup",books:"BT",from:"Seattle",fromT:"town-seattle",
+  job:"Newborn in Victoria's army",feat:"Big and blond.",about:"Has a gift that makes people feel sick and look away from him, so everyone leaves him alone.",love:"",age:"",
+  twist:"Leaves Seattle before the battle and survives.",twB:"BT",story:"",conn:"Bree's ally"},
+ {id:"maria",name:"Maria",aka:"Jasper's creator",s:"nomad",role:"bad",books:"EC",from:"The American South",fromT:"town-seattle",
+  job:"Built newborn armies to win territory",feat:"",about:"Turned Jasper in 1863 and used him to train her newborns in the Southern vampire wars.",love:"",age:"",twist:"",story:"",conn:"Jasper's creator"},
+
+ /* ---- Denali ---- */
+ {id:"tanya",name:"Tanya",aka:"Head of the Denali sisters",s:"denali",role:"sup",books:"TW",from:"Denali, Alaska",fromT:"town-denali",
+  job:"Leads the Denali coven",feat:"Strawberry-blonde curls.",about:"The Cullens' close friend; once hoped Edward might choose her.",love:"",age:"Centuries old",twist:"",story:"",conn:"The Cullens' 'cousin'"},
+ {id:"kate",name:"Kate",aka:"Denali sister",s:"denali",role:"sup",books:"BD",from:"Denali, Alaska",fromT:"town-denali",
+  job:"",feat:"Pale blonde, straight hair.",about:"Delivers an electric shock through her skin.",love:"Garrett",loveB:"BD",age:"Centuries old",
+  twist:"Helps Bella learn to stretch her shield by zapping Edward.",twB:"BD",story:"",conn:"Tanya's sister"},
+ {id:"irina",name:"Irina",aka:"Denali sister",s:"denali",role:"bad",rev:"BD",books:"EC",from:"Denali, Alaska",fromT:"town-denali",
+  job:"",feat:"Silver-blonde hair.",about:"Grieves Laurent and blames the wolves, so the Denali coven refuses to help the Cullens fight Victoria.",
+  love:"Laurent",loveB:"EC",age:"Centuries old",
+  twist:"Sees Renesmee in the woods, believes she's an immortal child, and reports the Cullens to the Volturi. She's executed for the false accusation.",twB:"BD",story:"",conn:"Tanya's sister"},
+ {id:"eleazar",name:"Eleazar",aka:"Former Volturi guard",s:"denali",role:"sup",books:"BD",from:"Spain; Denali",fromT:"town-denali",
+  job:"",feat:"Dark hair.",about:"Can sense what gifts other vampires have; he used to scout talent for the Volturi.",love:"Carmen",loveB:"BD",age:"Centuries old",twist:"",story:"",conn:"Carmen's mate"},
+ {id:"carmen",name:"Carmen",aka:"Denali coven",s:"denali",role:"sup",books:"BD",from:"Spain; Denali",fromT:"town-denali",
+  job:"",feat:"Dark hair.",about:"Gentle and warm; the first of the visitors to hold Renesmee without fear.",love:"Eleazar",loveB:"BD",age:"Centuries old",twist:"",story:"",conn:"Eleazar's mate"},
+
+ /* ---- Witnesses & allies ---- */
+ {id:"garrett",name:"Garrett",aka:"The revolutionary",s:"allies",role:"sup",books:"BD",from:"American nomad",fromT:"town-forks",
+  job:"Nomad",feat:"Long sandy hair.",about:"Fought in the American Revolution and still can't resist a cause. Gives a rousing speech against the Volturi.",love:"Kate",loveB:"BD",age:"Over 200",twist:"",story:"",conn:"Kate's mate"},
+ {id:"nahuel",name:"Nahuel",aka:"The other half-vampire",s:"allies",role:"sup",books:"BD",from:"South America",fromT:"town-isle",
+  job:"",feat:"Looks like a young man in his twenties.",about:"Half-human, half-vampire and about 150 years old; living proof that hybrids pose no danger.",love:"",age:"About 150",
+  twist:"Alice and Jasper bring him to the clearing, and his testimony ends the standoff.",twB:"BD",story:"",conn:"Found by Alice and Jasper"},
+ {id:"zafrina",name:"Zafrina",aka:"Amazon coven",s:"allies",role:"sup",books:"BD",from:"The Amazon, Brazil",fromT:"town-isle",
+  job:"",feat:"Tall, with long black hair.",about:"Can make anyone see whatever illusion she chooses. Adores Renesmee and shows her pictures of the rainforest.",love:"",age:"",twist:"",story:"",conn:"Witness"},
+ {id:"benjamin",name:"Benjamin",aka:"Egyptian coven",s:"allies",role:"sup",books:"BD",from:"Egypt",fromT:"town-volterra",
+  job:"",feat:"Looks like a boy.",about:"Can move earth, air, water and fire; his maker Amun hid him from the Volturi.",love:"Tia",age:"",twist:"",story:"",conn:"Witness"},
+ {id:"vladimir",name:"Vladimir",aka:"Romanian coven",s:"allies",role:"sup",books:"BD",from:"Romania",fromT:"town-volterra",
+  job:"",feat:"Ashy hair and chalky skin.",about:"One of the last two of the coven the Volturi overthrew. Came hoping to watch them fall.",love:"",age:"Ancient",twist:"",story:"",conn:"Stefan's partner in grudges"},
+ {id:"stefan",name:"Stefan",aka:"Romanian coven",s:"allies",role:"sup",books:"BD",from:"Romania",fromT:"town-volterra",
+  job:"",feat:"Dark hair and chalky skin.",about:"Vladimir's companion; just as eager to see the Volturi lose.",love:"",age:"Ancient",twist:"",story:"",conn:"Vladimir's partner in grudges"},
+
+ /* ---- Life and Death ---- */
+ {id:"beau",name:"Beau Swan",aka:"Beaufort Swan",s:"ld",role:"lead",books:"LD",from:"Phoenix; moves to Forks",fromT:"town-forks",
+  job:"High school student",feat:"Tall, lanky and clumsy.",about:"Bella's counterpart in the gender-swapped retelling: quiet, bookish, and unreadable to the vampire who can read everyone else.",
+  love:"Edythe Cullen",loveB:"LD",age:"17",
+  twist:"The ending changes completely. Beau is bitten and the change can't be stopped, so he becomes a vampire, and his death is faked so he can leave his human life behind.",twB:"LD",story:"",conn:"Edythe's partner"},
+ {id:"edythe",name:"Edythe Cullen",aka:"Edward's counterpart",s:"ld",role:"lead",books:"LD",from:"Forks",fromT:"town-forks",
+  job:"Forever a high-school student",feat:"Small, bronze-haired, golden-eyed.",about:"A mind-reading vampire who can't hear Beau's thoughts, and can't stay away from him.",
+  love:"Beau Swan",loveB:"LD",age:"Frozen at 17",twist:"",story:"",conn:"Beau's partner"},
+ {id:"jules",name:"Jules Black",aka:"Jacob's counterpart",s:"ld",role:"sup",books:"LD",from:"La Push",fromT:"town-lapush",
+  job:"Student",feat:"",about:"Tells Beau the Quileute legend of the cold ones.",love:"",age:"15",twist:"",story:"",conn:"Beau's friend"},
+ {id:"joss",name:"Joss",aka:"The tracker",s:"ld",role:"bad",books:"LD",from:"Nomad",fromT:"town-phx",
+  job:"Tracker",feat:"",about:"James's counterpart: a hunter who picks Beau as her next game.",love:"",age:"",twist:"Her attack is what sets the new ending in motion.",twB:"LD",story:"",conn:"Hunts Beau"}
+];
+
+/* Pronunciation: common readings, not official guidance */
+const PRON={bella:"BEL-uh",renee:"ruh-NAY",edward:"ED-werd",alice:"AL-iss",jasper:"JAS-per",rosalie:"ROH-zuh-lee",emmett:"EM-it",carlisle:"kar-LYLE",esme:"EZ-may",renesmee:"REN-ez-may",
+ jacob:"JAY-kub",billy:"BIL-ee",sam:"SAM YOO-lee",leah:"LEE-uh",seth:"SETH",embry:"EM-bree",quil:"KWIL",
+ aro:"AR-oh",caius:"KY-us",marcus:"MAR-kus",alec:"AL-ek",demetri:"deh-MEH-tree",laurent:"lor-AHN",riley:"RY-lee",bree:"BREE",diego:"dee-AY-go",maria:"muh-REE-uh",
+ tanya:"TAHN-yuh",irina:"ih-REE-nuh",eleazar:"el-ee-AY-zar",nahuel:"nah-WELL",zafrina:"zuh-FREE-nuh",vladimir:"VLAD-ih-meer",stefan:"STEF-un",beau:"BOH",edythe:"EE-dith"};
+
+/* Connections: [a, b, type, label, book] */
+const EDGES=[
+ ["bella","edward","love","soulmates; married","BD"],["bella","charlie","fam","daughter","TW"],["bella","renee","fam","daughter","TW"],["charlie","renee","love","divorced","TW"],
+ ["bella","jacob","friend","best friends; he loves her","NM"],["bella","alice","friend","best friends","TW"],["bella","rosalie","ally","frosty, then sisters-in-law","BD"],
+ ["bella","renesmee","fam","mother","BD"],["edward","renesmee","fam","father","BD"],["jacob","renesmee","love","imprinted on her","BD"],
+ ["carlisle","esme","love","married","TW"],["carlisle","edward","fam","created him; adoptive father","TW"],["carlisle","rosalie","fam","created her","TW"],["carlisle","emmett","fam","created him","TW"],["carlisle","alice","fam","adoptive father","TW"],["carlisle","jasper","fam","adoptive father","TW"],
+ ["alice","jasper","love","married","TW"],["rosalie","emmett","love","married","TW"],["rosalie","jasper","fam","pose as twins","TW"],["edward","alice","fam","adoptive siblings","TW"],["edward","emmett","fam","adoptive siblings","TW"],
+ ["edward","jacob","foe","rivals, then family","EC"],["edward","tanya","friend","old friends; she hoped for more","EC"],["edward","seth","friend","unlikely friends","EC"],
+ ["jacob","billy","fam","father and son","TW"],["charlie","billy","friend","best friends","TW"],["charlie","sue","love","together","BD"],["charlie","harry","friend","fishing buddies","TW"],["billy","harry","ally","fellow elders","TW"],
+ ["sam","emily","love","imprinted; engaged","NM"],["sam","leah","love","exes","NM"],["leah","emily","fam","cousins","NM"],["leah","seth","fam","siblings","EC"],["sue","harry","love","married","NM"],["sue","leah","fam","mother","NM"],["sue","seth","fam","mother","EC"],["harry","leah","fam","father","NM"],
+ ["jacob","sam","foe","pack brothers, then rival Alphas","BD"],["jacob","seth","ally","his pack","BD"],["jacob","leah","ally","his second","BD"],["jacob","embry","friend","best friends","NM"],["jacob","quil","friend","best friends","NM"],["sam","paul","ally","pack","NM"],["paul","jacob","foe","clashes; future brother-in-law","NM"],["sam","embry","ally","pack","NM"],["sam","quil","ally","pack","EC"],
+ ["mike","bella","friend","classmate with a crush","TW"],["mike","jessica","love","dating","NM"],["jessica","bella","friend","friends","TW"],["angela","bella","friend","close friends","TW"],["tyler","bella","ally","nearly hit her with his van","TW"],["mike","edward","foe","jealous","TW"],
+ ["james","victoria","love","mates","TW"],["james","laurent","ally","coven","TW"],["james","bella","foe","hunts her","TW"],["james","alice","foe","hunted her as a human","TW"],["edward","james","foe","the Cullens destroy him","TW"],["victoria","laurent","ally","coven","TW"],
+ ["victoria","bella","foe","wants revenge","NM"],["laurent","bella","foe","tries to kill her","NM"],["laurent","irina","love","lovers","EC"],["victoria","riley","love","uses him","EC"],["edward","victoria","foe","destroys her","EC"],["seth","victoria","foe","helps destroy her","EC"],
+ ["riley","bree","ally","her commander","BT"],["bree","diego","friend","close friends","BT"],["bree","fred","friend","allies","BT"],["riley","diego","foe","betrays him","BT"],["jane","bree","foe","has her destroyed","EC"],["carlisle","bree","ally","accepts her surrender","EC"],
+ ["jasper","maria","foe","his creator","EC"],
+ ["aro","caius","ally","Volturi brothers","NM"],["aro","marcus","ally","brothers-in-law","NM"],["aro","jane","ally","his guard","NM"],["jane","alec","fam","twins","NM"],["aro","demetri","ally","his guard","NM"],["aro","felix","ally","his guard","NM"],["aro","edward","foe","covets his gift","NM"],["aro","alice","foe","covets her gift","NM"],["aro","carlisle","friend","old friends","NM"],["jane","bella","foe","her gift fails on Bella","NM"],
+ ["irina","renesmee","foe","reports her to the Volturi","BD"],["irina","tanya","fam","sisters","BD"],["tanya","kate","fam","sisters","BD"],["kate","garrett","love","mates","BD"],["eleazar","carmen","love","mates","BD"],["eleazar","aro","ally","former guard","BD"],["kate","bella","ally","trains her shield","BD"],["caius","irina","foe","executes her","BD"],
+ ["nahuel","alice","ally","she finds him","BD"],["zafrina","renesmee","friend","adores her","BD"],["benjamin","carlisle","ally","witness","BD"],["vladimir","stefan","ally","Romanian coven","BD"],["vladimir","aro","foe","overthrown by the Volturi","BD"],["garrett","carlisle","ally","witness","BD"],
+ ["beau","edythe","love","together","LD"],["joss","beau","foe","hunts him","LD"],["jules","beau","friend","friends","LD"],["beau","bella","ally","her counterpart","LD"],["edythe","edward","ally","his counterpart","LD"],["jules","jacob","ally","his counterpart","LD"],["joss","james","ally","his counterpart","LD"]
+];
+
+/* Family trees. FAMX = people without full character entries */
+const FAMILIES=[
+ {name:"The Cullens & the Swans",gens:[["carlisle","esme","charlie","renee","phil"],["rosalie","emmett","alice","jasper","edward","bella"],["renesmee"]],
+  links:[["carlisle","rosalie"],["carlisle","emmett"],["carlisle","alice"],["carlisle","jasper"],["carlisle","edward"],["esme","rosalie"],["esme","emmett"],["esme","alice"],["esme","jasper"],["esme","edward"],["charlie","bella"],["renee","bella"],["edward","renesmee"],["bella","renesmee"]],
+  spouse:[["carlisle","esme"],["renee","phil"],["rosalie","emmett"],["alice","jasper"],["edward","bella"]],sib:[]},
+ {name:"The Blacks & the Clearwaters of La Push",gens:[["billy","sarah","harry","sue","charlie2"],["paul","rachel","rebecca","jacob","leah","seth"]],
+  links:[["billy","rachel"],["billy","rebecca"],["billy","jacob"],["sarah","rachel"],["sarah","rebecca"],["sarah","jacob"],["harry","leah"],["harry","seth"],["sue","leah"],["sue","seth"]],
+  spouse:[["billy","sarah"],["harry","sue"],["sue","charlie2"],["paul","rachel"]],sib:[]},
+ {name:"The Uleys",gens:[["joshua","allison"],["sam","emily"]],links:[["joshua","sam"],["allison","sam"]],spouse:[["sam","emily"]],sib:[]},
+ {name:"The Volturi",gens:[["sulpicia","aro","didyme","marcus","caius","athenodora"],["jane","alec"]],links:[],
+  spouse:[["aro","sulpicia"],["marcus","didyme"],["caius","athenodora"]],sib:[["aro","didyme"],["jane","alec"]]},
+ {name:"The Denali coven",gens:[["sasha"],["vasilii","garrett","kate","tanya","irina","laurent","eleazar","carmen"]],
+  links:[["sasha","tanya"],["sasha","kate"],["sasha","irina"],["sasha","vasilii"]],spouse:[["garrett","kate"],["irina","laurent"],["eleazar","carmen"]],sib:[]},
+ {name:"Nahuel's family",gens:[["joham","pire","huilen"],["nahuel","sisters"]],links:[["joham","nahuel"],["pire","nahuel"],["joham","sisters"]],spouse:[],sib:[["pire","huilen"]]}
+];
+/* Bonds between trees, shown in the side panel only */
+const CROSS=[["jacob","renesmee","love",["Imprint","Imprinted on her"]],["leah","emily","fam",["Cousin","Cousin"]],["leah","sam","love",["Ex","Ex"]],["charlie","billy","ally",["Best friend","Best friend"]],["charlie","sue","love",["Partner","Partner"]],["eleazar","aro","ally",["Former master","Former guard"]]];
+const FAMX={
+ phil:{name:"Phil Dwyer",note:"Renée's husband; plays baseball"},
+ sarah:{name:"Sarah Black",note:"Jacob's mum; died in a car accident",dead:true},
+ rachel:{name:"Rachel Black",note:"Jacob's sister"},
+ rebecca:{name:"Rebecca Black",note:"Jacob's sister; lives in Hawaii"},
+ charlie2:{name:"Charlie Swan",note:"Also in the Swan tree"},
+ joshua:{name:"Joshua Uley",note:"Sam's father; left the family"},
+ allison:{name:"Allison Uley",note:"Sam's mother"},
+ sulpicia:{name:"Sulpicia",note:"Aro's wife"},
+ athenodora:{name:"Athenodora",note:"Caius's wife"},
+ didyme:{name:"Didyme",note:"Aro's sister; Marcus's wife",dead:true},
+ sasha:{name:"Sasha",note:"Created the Denali sisters",dead:true},
+ vasilii:{name:"Vasilii",note:"Sasha's immortal child",dead:true},
+ joham:{name:"Joham",note:"Nahuel's vampire father"},
+ pire:{name:"Pire",note:"Nahuel's mother; died at his birth",dead:true},
+ huilen:{name:"Huilen",note:"Nahuel's aunt; raised him"},
+ sisters:{name:"Nahuel's half-sisters",note:"Joham's other hybrid children"}
+};
+
+/* Places. region: wa = Washington (on the map) | far = further afield */
+const TOWNS=[
+ {id:"town-forks",region:"wa",b:"TW",name:"Forks, Washington",hub:"Where it all happens",col:"#3d6050",
+  d:"A tiny, almost permanently overcast logging town on the Olympic Peninsula, so rainy it suits a vampire family perfectly. Charlie is chief of police, everyone knows everyone, and the Cullens live just out of town in the forest.",
+  places:[["Forks High School","Where Bella first sees the Cullens, and where Edward sits next to her in Biology.","TW"],["Charlie's house","Bella's bedroom window is Edward's favourite entrance.","TW"],["The Cullen house","A big, glass-walled house hidden in the woods by the river.","TW"],["Forks Hospital","Where Carlisle works, and where Bella is a frequent visitor.","TW"],["Newton's Olympic Outfitters","Mike's family's outdoor shop and Bella's part-time job.","NM"],["The cottage","Esme's wedding gift to Bella and Edward, deep in the woods.","BD",1]],
+  books:["TW","NM","EC","BD","MS","LD"]},
+ {id:"town-lapush",region:"wa",b:"TW",name:"La Push, Washington",hub:"The Quileute reservation",col:"#8a5a2b",
+  d:"The Quileute tribe's land on the coast, about fifteen miles from Forks. The treaty keeps the Cullens off it. Bonfires, cliffs and long grey beaches, and home to Jacob and the pack.",
+  places:[["First Beach","Where Jacob tells Bella the legend of the cold ones.","TW"],["The treaty line","The boundary the Cullens agreed never to cross.","TW"],["Jacob's garage","Where he rebuilds the motorbikes, and the Rabbit.","NM"],["The cliffs","Bella's cliff dive, and Jacob pulling her out of the water.","NM",1],["Sam and Emily's house","The pack's kitchen and meeting place.","NM"],["The bonfire","Where the elders tell the stories of Taha Aki and the Third Wife.","EC"]],
+  books:["TW","NM","EC","BD"]},
+ {id:"town-wild",region:"wa",b:"TW",name:"The forest & the mountains",hub:"Olympic National Forest",col:"#4f6f5a",
+  d:"The moss-covered forest and mountains around Forks: where vampires hunt, wolves patrol and the big confrontations happen.",
+  places:[["The meadow","Edward's secret clearing, where Bella first sees him in sunlight.","TW"],["The clearing","Vampire baseball during thunderstorms; later the battlefield.","TW"],["The mountain campsite","Where Bella waits out the battle with Edward and Jacob.","EC",1],["The battle","The Cullens and wolves destroy Victoria's newborns.","EC",1],["The standoff","The Volturi face the Cullens and their witnesses in the snow.","BD",1]],
+  books:["TW","NM","EC","BD"]},
+ {id:"town-pa",region:"wa",b:"TW",name:"Port Angeles, Washington",hub:"The nearest real town",col:"#4f7590",
+  d:"The bigger town an hour's drive north of Forks, on the Strait of Juan de Fuca. Dress shopping, bookshops and dinner.",
+  places:[["The bookshop trip","Bella gets lost and runs into a group of threatening men; Edward appears.","TW"],["La Bella Italia","Where Edward finally admits what he can do.","TW"],["The cinema","A double date with Jacob and Mike.","NM"]],
+  books:["TW","NM","MS"]},
+ {id:"town-seattle",region:"wa",b:"EC",name:"Seattle, Washington",hub:"The newborn army",col:"#5d5f73",
+  d:"The big city across Puget Sound. In Eclipse, a string of disappearances and murders hides something much worse.",
+  places:[["The Seattle killings","The news story that hides a vampire army.","EC"],["The newborns' basement","Where Riley keeps the army, and where Bree lives.","BT",1],["J. Jenks's office","The lawyer Jasper uses for false identities.","BD"]],
+  books:["EC","BT","BD"]},
+ {id:"town-phx",region:"far",b:"TW",name:"Phoenix, Arizona",hub:"Bella's old home",col:"#c08a3a",
+  d:"The hot, sunny city Bella grew up in with Renée, and where Twilight's climax plays out.",
+  places:[["Bella's mother's house","The empty house James calls from.","TW"],["The ballet studio","Where James traps Bella.","TW",1],["The hotel","Where Alice and Jasper hide Bella.","TW"]],
+  books:["TW","MS"]},
+ {id:"town-jax",region:"far",b:"TW",name:"Jacksonville, Florida",hub:"Renée and Phil",col:"#c06a50",
+  d:"Where Renée moves with Phil, which is why Bella goes to Forks in the first place.",
+  places:[["Renée's house","Bella visits with Edward before graduation.","EC"]],books:["TW","EC"]},
+ {id:"town-volterra",region:"far",b:"NM",name:"Volterra, Italy",hub:"The Volturi",col:"#7d1220",
+  d:"An ancient walled city in Tuscany, home to the Volturi for thousands of years. The town celebrates St. Marcus Day, unaware of who it really honours.",
+  places:[["The clock tower","Where Edward plans to step into the sun at noon.","NM",1],["The Palazzo dei Priori","Beneath it, the Volturi's tower and throne room.","NM"],["St. Marcus Day","The festival marking the day vampires were 'driven out'.","NM"]],
+  books:["NM","BD"]},
+ {id:"town-isle",region:"far",b:"BD",name:"Isle Esme, Brazil",hub:"The honeymoon",col:"#3d8a86",
+  d:"Carlisle's gift to Esme: a private island off the coast near Rio de Janeiro.",
+  places:[["The beach house","Bella and Edward's honeymoon, and the start of everything that follows.","BD",1],["Rio de Janeiro","The nearest city.","BD"]],
+  books:["BD"]},
+ {id:"town-denali",region:"far",b:"TW",name:"Denali, Alaska",hub:"The Denali coven",col:"#5a8fae",
+  d:"Home of Tanya's coven, the Cullens' 'cousins'. It's where Edward runs to after he first meets Bella.",
+  places:[["Tanya's coven","Where Laurent goes to try the animal diet.","TW"]],books:["TW","EC","BD","MS"]}
+];
+
+/* Map pins (x,y in a 680x460 box: the Olympic Peninsula and Puget Sound) */
+const PLACES=[
+ {id:"pl-lapush",name:"La Push & First Beach",x:92,y:318,lx:-30,ly:26,b:"TW",d:"The Quileute reservation on the Pacific coast."},
+ {id:"pl-forks",name:"Forks",x:176,y:292,lx:-12,ly:-10,anc:"end",b:"TW",d:"Charlie's house, the high school and the hospital."},
+ {id:"pl-cullen",name:"The Cullen house",x:218,y:266,lx:12,ly:4,b:"TW",d:"Hidden in the forest a few miles out of town."},
+ {id:"pl-meadow",name:"The meadow",x:262,y:214,lx:12,ly:4,b:"TW",d:"Edward's sunlit clearing in the hills."},
+ {id:"pl-clear",name:"The clearing",x:302,y:240,lx:12,ly:4,b:"TW",d:"Baseball, the newborn battle and the Volturi standoff."},
+ {id:"pl-pa",name:"Port Angeles",x:350,y:104,b:"TW",d:"An hour north, on the Strait of Juan de Fuca."},
+ {id:"pl-sea",name:"Seattle",x:586,y:250,b:"EC",d:"Across Puget Sound; Victoria's army."}
+];
+
+/* Timeline: when, title, detail, book (spoiler level), isBook, era (hist | saga) */
+const TIMELINE=[
+ ["Legend","Taha Aki, the first spirit wolf","The Quileute's founding story: a chief who could leave his body and became a wolf to protect his people.","TW",0,"hist"],
+ ["About 3,000 years ago","The Volturi rise","Aro, Caius and Marcus come together in Volterra.","NM",0,"hist"],
+ ["About 1,500 years ago","The Romanian coven falls","The Volturi overthrow Vladimir and Stefan's coven.","BD",0,"hist"],
+ ["Centuries ago","The immortal children","The Volturi destroy every vampire child, and anyone who made one, including the Denali sisters' creator.","BD",0,"hist"],
+ ["1640s","Carlisle is born in London","The son of an Anglican pastor who hunts vampires.","TW",0,"hist"],
+ ["1663","Carlisle is turned","He refuses to feed on humans and learns to live on animals.","TW",0,"hist"],
+ ["1863","Maria turns Jasper","He spends decades fighting in her newborn armies.","EC",0,"hist"],
+ ["1901","Edward is born in Chicago","Edward Anthony Masen.","TW",0,"hist"],
+ ["1918","The Spanish flu","Carlisle turns the dying Edward at his mother's request.","TW",0,"hist"],
+ ["1920s","Alice is turned","In an asylum, by a vampire protecting her from James.","TW",0,"hist"],
+ ["1921","Esme is turned","Carlisle finds her after her fall.","TW",0,"hist"],
+ ["1933","Rosalie is turned","After Royce King's attack.","EC",0,"hist"],
+ ["1935","Emmett is turned","Rosalie carries him to Carlisle after a bear attack.","TW",0,"hist"],
+ ["1930s","The treaty","Carlisle and Ephraim Black, Jacob's great-grandfather, agree terms: no biting humans, no crossing onto Quileute land.","TW",0,"hist"],
+ ["1950","Alice and Jasper find the Cullens","Alice had already seen them in her visions.","TW",0,"hist"],
+ ["13 September 1987","Bella is born","To Charlie and Renée, who split up soon after.","TW",0,"hist"],
+ ["Junior year, January","Twilight begins","Bella moves to Forks. Ends at prom.","TW",1,"saga"],
+ ["Same months","Midnight Sun","Twilight from Edward's side.","MS",1,"saga"],
+ ["Spring","James hunts Bella","The baseball game, the chase to Phoenix and the ballet studio.","TW",0,"saga"],
+ ["September","New Moon begins","Bella's 18th birthday party, and the Cullens leave.","NM",1,"saga"],
+ ["October to January","The empty months","Bella's grief, the motorbikes and Jacob.","NM",0,"saga"],
+ ["March","Volterra","Bella and Alice race to Italy to stop Edward.","NM",0,"saga"],
+ ["Spring","Eclipse begins","The Seattle killings; graduation is weeks away.","EC",1,"saga"],
+ ["Same weeks","Bree Tanner","The newborn army, from the inside.","BT",1,"saga"],
+ ["June","The newborn battle","The Cullens and wolves fight side by side.","EC",0,"saga"],
+ ["August","Breaking Dawn begins","The wedding and Isle Esme.","BD",1,"saga"],
+ ["September","Renesmee is born","Bella becomes a vampire.","BD",0,"saga"],
+ ["January","The Volturi in the snow","The standoff in the clearing.","BD",0,"saga"],
+ ["About seven years on","Renesmee grows up","She'll reach full maturity and stop ageing.","BD",0,"saga"],
+ ["Alternate universe","Life and Death","Twilight retold with genders swapped, and a new ending.","LD",1,"saga"]
+];
+
+/* ============ RECAPS (my own summaries) ============ */
+const RECAPS={
+ TW:{start:"Bella Swan, 17, leaves sunny Phoenix so her mum, Renée, can travel with her new husband, Phil, and moves in with her quiet dad, Charlie, the police chief of rainy Forks. He buys her an old red truck from his friend Billy Black.",
+  events:["At school Bella notices the Cullens: five pale, gorgeous foster kids of Dr. Carlisle Cullen. In Biology, Edward Cullen looks at her as if he hates her, then disappears for a week.","He comes back friendlier, but cryptic. When Tyler's van skids across the icy car park, Edward stops it with his bare hand, then insists she imagined it.","At First Beach, Jacob Black tells Bella the Quileute legend of the 'cold ones' and the treaty with their ancestors. Bella works it out: Edward is a vampire.","In Port Angeles, Edward rescues her from a group of men. Over dinner he admits he can read minds, every mind except hers.","In his meadow he shows her why the Cullens avoid the sun: his skin glitters. They feed only on animals, but her scent is a torment to him. They fall for each other anyway.","She meets the family; Rosalie is hostile. During a thunderstorm baseball game, three nomads arrive: James, Victoria and Laurent. James, a tracker, makes Bella his target.","The Cullens split up to protect her. Alice and Jasper take her to Phoenix. James calls, claims he has her mother, and lures her to her old ballet studio."],
+  end:"It's a trap; Renée isn't there. James breaks Bella's leg and bites her wrist before the Cullens arrive and destroy him. Edward sucks the venom out to stop her turning. The cover story is a fall down some stairs. Back in Forks he takes her to prom, where she asks him to make her a vampire. He refuses.",
+  remember:["Bella and Edward are together; she wants to be a vampire, he doesn't want that for her.","Victoria escaped, and James was her mate.","Laurent left for the Denali coven in Alaska.","The treaty: the Cullens don't bite humans and stay off Quileute land. Billy Black doesn't trust them.","Alice can see the future; Edward reads minds; Jasper controls emotions."]},
+ NM:{start:"It's Bella's 18th birthday and she's horrified to be older than Edward will ever be. At her party at the Cullens' house she gets a paper cut opening a present, and Jasper lunges for her.",
+  events:["Edward decides his world is too dangerous for her. The Cullens leave Forks. In the woods he tells Bella he doesn't want her any more, and goes.","Months of numb grief follow. Bella discovers that when she does something reckless she hears Edward's voice, so she buys two broken motorbikes.","Jacob fixes the bikes, and their friendship slowly brings her back to life. He's falling for her.","Laurent turns up in the meadow and is about to kill her for Victoria when giant wolves chase him off.","Jacob starts avoiding her and running with Sam Uley's gang. He's a wolf: the legends are true, and the pack is protecting Forks from Victoria. Harry Clearwater dies of a heart attack.","Bella cliff-dives to hear Edward's voice and nearly drowns; Jacob saves her. Alice sees the jump in a vision, thinks Bella is dead and comes back. Edward hears the same news.","Wanting to die, Edward goes to the Volturi in Volterra, Italy. When they refuse to kill him, he plans to step into the sun in front of the crowds."],
+  end:"Alice and Bella reach Volterra in time, and Bella stops Edward in the clock tower at noon. The Volturi let them go only after Alice shows Aro a vision of Bella as a vampire: she must be changed, or die. Edward admits he left to protect her and never stopped loving her. The Cullens vote; most say yes to changing her. Jacob reminds Edward that biting a human breaks the treaty.",
+  remember:["Edward and the Cullens are back.","The Volturi expect Bella to be turned. They will check.","Jacob is a wolf and in love with Bella. Sam Uley is the Alpha.","Victoria is still hunting Bella.","Charlie is furious with Edward and has Bella grounded."]},
+ EC:{start:"Spring, and graduation is coming. A wave of disappearances and murders is hitting Seattle. Victoria is still circling, Charlie still has Bella grounded, and Edward doesn't want her near the wolves.",
+  events:["Bella sneaks off to see Jacob. Edward and Jacob dislike each other more than ever.","Edward wants marriage before he changes her. Bella eventually says yes; she wants to be with him while she's still human.","Someone breaks into Bella's room and steals some of her clothes. The Cullens realise the Seattle killings are an army of newborn vampires, and that its target is Bella.","Rosalie tells Bella how she was turned, and why she'd never choose it. Jasper explains newborn armies and his own past.","The Cullens and the pack agree to fight together. Jacob kisses Bella against her will; she punches him and breaks her hand.","The night before the battle, Bella shelters on the mountain with Edward and Jacob. Jacob keeps her warm in the tent, and he and Edward reach an uneasy truce. Bella realises she loves Jacob too, but loves Edward more.","The newborns are destroyed. At the campsite, Edward and Seth destroy Victoria and Riley."],
+  end:"A newborn, Bree, surrenders, but the Volturi guard arrive and Jane has her killed, reminding the Cullens that Bella is still human. Jacob is badly hurt saving Leah. Bella visits him and says goodbye to that future. She and Edward tell Charlie they're engaged; Jacob receives a wedding invitation and runs off into the woods as a wolf.",
+  remember:["Bella and Edward are engaged; she'll be changed after the wedding.","Victoria and her army are gone, but the Volturi are watching.","Jacob has left.","Leah and Seth Clearwater are wolves; Seth is friendly with Edward.","The Denali coven refused to help because Irina blames the wolves for killing Laurent."]},
+ BT:{start:"Bree Tanner, 15, has been a vampire for about three months. She lives in a basement in Seattle with a crowd of violent, starving newborns run by Riley, who answers to a mysterious 'her'.",
+  events:["Bree keeps her head down and stays alive. She makes friends with Diego, one of the older newborns, and with Fred, whose gift makes people look away.","Out hunting, Bree and Diego find that the sun doesn't burn them: it just makes them sparkle. Riley has been lying.","Diego goes to tell Riley what they've found, and doesn't come back. Riley claims Diego is somewhere else. Bree realises he's dead.","Fred decides to leave. Bree stays, hoping to find Diego.","The army is given a scent to follow, a girl living with a group of yellow-eyed vampires, and sent into battle."],
+  end:"Bree surrenders to Carlisle and Esme rather than fight. When the Volturi arrive, Jane tortures her to see if Edward will react. Bree thinks of Diego. Jane decides she isn't worth saving and has Felix destroy her.",
+  remember:["This happens alongside the last chapters of Eclipse.","Victoria built the army, and Riley lied to every newborn in it.","Fred, the only one to leave, is still out there."]},
+ BD:{start:"Bella marries Edward in the Cullens' garden. Jacob turns up at the reception, and is furious to learn they plan a real honeymoon while she's human.",
+  events:["On Isle Esme, off Brazil, Bella and Edward finally get their honeymoon. Within weeks she's pregnant, which shouldn't be possible.","Back in Forks the baby grows fast and breaks Bella's bones. Rosalie guards her. Sam's pack decides the baby is a threat and must die. Jacob refuses Sam's command, breaks away and forms his own pack with Seth and Leah.","Bella drinks human blood to keep her strength up, and Edward can hear that the baby loves her.","The birth nearly kills her. Edward injects his venom straight into her heart. When Jacob looks at the baby, Renesmee, he imprints on her.","Bella wakes a vampire with remarkable self-control. Jacob shows Charlie he's a wolf, so Charlie can stay in Bella's life without knowing everything.","Irina sees Renesmee from a distance and reports an 'immortal child' to the Volturi. Alice sees them coming, and she and Jasper leave without explanation.","The Cullens call on friends around the world to witness that Renesmee is no threat, and Bella learns to extend her shield over everyone."],
+  end:"The Volturi face them in the snow. Irina is destroyed for her mistake. Alice and Jasper arrive with Nahuel, a 150-year-old half-vampire who proves hybrids aren't dangerous. Alice shows Aro the battle that's coming, with the Volturi losing, and they leave. At home, Bella lifts her shield so Edward can finally hear her thoughts.",
+  remember:["The saga ends here: Bella and Edward, forever, with Renesmee.","Jacob has imprinted on Renesmee.","Charlie knows just enough, and is with Sue Clearwater.","The Volturi have backed down, for now."]},
+ MS:{start:"Edward is bored by Forks, bored by school and drowning in everyone's thoughts. Then the new girl sits next to him in Biology, and her scent nearly makes him kill her on the spot. Worse, he can't hear her mind.",
+  events:["He flees to Denali and talks to Tanya, then comes back determined to be stronger.","He saves Bella from Tyler's van and has to deal with a furious family; Rosalie and Jasper want the witness dealt with.","Alice's visions keep showing two futures: Bella dead, or Bella as one of them. She also sees the two of them as friends.","In Port Angeles he reads the minds of the men following Bella and only just holds himself back from killing them.","The meadow, the baseball game and James, from inside Edward's head, including the hunt for James that goes wrong."],
+  end:"Edward reaches the ballet studio, fights James and sucks the venom from Bella's wrist, the hardest thing he's ever done. The book ends at prom, with Edward unable to leave Bella and unwilling to change her.",
+  remember:["Bella is his 'singer': her blood calls to him more than anyone's.","Alice saw Bella as a vampire very early on.","It covers the same months as Twilight. Read it whenever you like after Twilight."]},
+ LD:{start:"Beaufort 'Beau' Swan moves from Phoenix to Forks to live with his dad, Charlie. At school he can't stop noticing the Cullens, and especially Edythe.",
+  events:["The story tracks Twilight closely, with almost every gender swapped: Edythe for Edward, Jules Black for Jacob, Archie for Alice, Dr. Carine Cullen for Carlisle.","Edythe saves Beau from a van, admits she reads minds except his, and shows him the meadow.","A tracker named Joss chooses Beau as her prey, and the chase to Phoenix plays out much as in Twilight."],
+  end:"The ending changes. Beau is bitten and the transformation can't be stopped. He becomes a vampire, and the Cullens fake his death so he can leave his human life behind and stay with Edythe.",
+  remember:["It's a stand-alone retelling; nothing here changes the main saga.","Read it after Twilight for the comparison."]}
+};
+
+/* How the books connect (Connections Map tab) */
+const XOVER=[
+ {bk:"MS",t:"Midnight Sun is Twilight, from Edward's side",d:"Same months, same scenes, told by Edward. You'll hear what every student in Forks was thinking."},
+ {bk:"BT",t:"Bree Tanner is the other side of Eclipse",d:"The newborn who surrenders after the battle has her own novella, which shows the Seattle army from the inside."},
+ {bk:"LD",t:"Life and Death mirrors Twilight",d:"Beau, Edythe, Jules and Joss are Bella, Edward, Jacob and James with genders swapped. The ending is different."},
+ {bk:"NM",t:"James and Victoria were mates",d:"When the Cullens destroy James, Victoria wants Edward to lose his mate too. It drives New Moon and Eclipse."},
+ {bk:"BD",t:"Laurent, Irina and the Volturi",d:"Laurent goes to Denali and becomes Irina's lover; the wolves kill him. Irina blames the pack, refuses to help in Eclipse, and in Breaking Dawn sees Renesmee with Jacob and reports her to the Volturi."},
+ {bk:"BD",t:"The Volturi's condition",d:"In New Moon the Volturi let Bella go on condition she's changed. That debt is part of why they come to Forks."},
+ {bk:"TW",t:"James once hunted Alice",d:"Alice was turned to save her from James. It's why he's so interested in the Cullens."},
+ {bk:"EC",t:"Jasper's past is the battle plan",d:"Jasper learned about newborn armies serving Maria in the South. That knowledge saves the Cullens and the wolves."},
+ {bk:"BD",t:"The treaty and the true Alpha",d:"Ephraim Black made the treaty with Carlisle. Jacob, his great-grandson, is the rightful Alpha, which lets him refuse Sam's order."}
+];
+
+/* ============ HELPERS ============ */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const C=Object.fromEntries(CHARS.map(c=>[c.id,c]));
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* ============ SPOILER SHIELD ============
+   Level L = reading book L in the reading order (0 Twilight … 6 Life and Death); 7 = show everything.
+   Premises and items from books you haven't started are blurred. Twists stay blurred until their book is finished.
+   Any detail that names a later book is held back until that book is finished. */
+const MAXL=BOOKLIST.length;
+const BMENT=[[/New Moon/,1],[/Eclipse/,2],[/Bree Tanner|Short Second Life/,3],[/Breaking Dawn/,4],[/Midnight Sun/,5],[/Life and Death/,6]];
+let spLevel=store.get("twiSpoiler",null);
+const SPK=new Set();
+const PL=()=>spLevel===null?0:spLevel;
+const ALL=()=>PL()>=MAXL;
+const bi=b=>BIDX[b]??0;
+const firstBook=b=>{const xs=String(b||"TW").split(" ").map(x=>BIDX[x]).filter(x=>x!==undefined);return xs.length?Math.min(...xs):0};
+const mention=t=>{let m=-1;const s=String(t||"");BMENT.forEach(([re,i])=>{if(i>m&&re.test(s))m=i});return m};
+const later=t=>mention(t);
+const hideItem=f=>!ALL()&&f>PL();
+const hideField=r=>!ALL()&&r>=0&&r>=PL();
+const risk=(text,base)=>Math.max(base??-1,later(text));
+function sp(hide,key,html,tag){if(!hide||SPK.has(key))return html;tag=tag||"span";return `<${tag} class="sp-hidden" data-spk="${key}" title="Spoiler: tap to reveal">${html}</${tag}>`}
+
+const dispName=c=>c.alt&&hideItem(bi(c.nameB))?c.alt:c.name;
+const nm=id=>C[id]?dispName(C[id]):FAMX[id]?.name||id;
+const SHORTN={charlie2:"Charlie",renesmee:"Renesmee",sisters:"Half-sisters"};
+const short=id=>SHORTN[id]||nm(id).replace(/^(Dr\. )/,"").split(" ")[0];
+const facName=s=>FACT[s]?.name||"Elsewhere";
+const sw=col=>`<span class="swatch" style="background:${col}"></span>`;
+const fsw=s=>sw(FCOL[s]||"#888");
+const ROLE={lead:["Main character","good"],sup:["Supporting","grey"],bad:["Antagonist","bad"]};
+const alignPill=a=>`<span class="pill p-${ROLE[a][1]}">${ROLE[a][0]}</span>`;
+const statusPill=(c,key)=>c.status==="dead"?sp(hideField(c.deadB?bi(c.deadB):firstBook(c.books)),(key||"x")+"-dd",`<span class="pill p-dead">Deceased</span>`):"";
+const bookTag=b=>b.split(" ").map(x=>BOOKS[x]).join(" · ");
+const TOWN=Object.fromEntries(TOWNS.map(t=>[t.id,t]));
+function charLink(id){return C[id]?`<button class="lnk" data-go="char:${id}">${esc(nm(id))}</button>`:esc(nm(id))}
+
+/* spoiler dialog options */
+(function(){let h=`<p class="opt-h">Reading order</p>`;
+ BOOKLIST.forEach((b,i)=>{h+=`<button type="button" data-lv="${i}" style="--wc:${BSER[b.s].col}"><b>${i===0?"I'm new, or reading ":"Reading "}${esc(b.title)}</b><span>${i===0?"Hide everything after the first page":"Finished "+esc(BOOKLIST[i-1].abbr||BOOKLIST[i-1].title)} · ${esc(b.s==="saga"?"Saga book "+b.n:"Companion novel")}</span></button>`});
+ h+=`<p class="opt-h">All caught up</p><button type="button" data-lv="${MAXL}"><b>I've read them all, or don't mind spoilers</b><span>Show everything</span></button>`;
+ $("#spd-opts").innerHTML=h})();
+const LVLAB=i=>i>=MAXL?"Showing everything":"Reading "+(BOOKLIST[i].abbr||BOOKLIST[i].title);
+function spStrip(){$("#sp-strip").innerHTML=ALL()?`<span>Spoilers: <b>${LVLAB(MAXL)}</b></span><button class="lnk" data-open-sp>Change</button>`:`<span>Spoilers: <b>${esc(LVLAB(PL()))}</b>. Blurred items come from books you haven't finished. Tap one to peek.</span><button class="lnk" data-open-sp>Change</button>`;
+ document.querySelectorAll("#spd-opts [data-lv]").forEach(b=>b.classList.toggle("cur",+b.dataset.lv===PL()))}
+document.addEventListener("click",e=>{const el=e.target.closest(".sp-hidden");if(!el)return;e.preventDefault();e.stopPropagation();
+ const k=el.dataset.spk;SPK.add(k);el.classList.remove("sp-hidden");el.querySelectorAll(".sp-hidden").forEach(c=>{SPK.add(c.dataset.spk);c.classList.remove("sp-hidden")});
+ document.querySelectorAll(`[data-sp-for="${k}"]`).forEach(n=>n.remove())},true);
+document.addEventListener("click",e=>{const r=e.target.closest("[data-reveal]");if(!r)return;const t=document.querySelector(`[data-spk="${r.dataset.reveal}"]`);if(t)t.click()});
+const spd=document.getElementById("spd");
+function openSp(){if(typeof spd.showModal==="function")spd.showModal();else spd.setAttribute("open","")}
+function closeSp(){if(spd.open){typeof spd.close==="function"?spd.close():spd.removeAttribute("open")}}
+document.addEventListener("click",e=>{if(e.target.closest("#sp-open,[data-open-sp]"))openSp()});
+document.getElementById("spd-opts").addEventListener("click",e=>{const b=e.target.closest("[data-lv]");if(!b)return;spLevel=+b.dataset.lv;store.set("twiSpoiler",spLevel);SPK.clear();closeSp();spStrip();show(current)});
+spd.addEventListener("cancel",()=>{if(spLevel===null){spLevel=0;store.set("twiSpoiler",0);spStrip()}});
+function coverStage(key,what){if(ALL()||SPK.has(key))return;const s=document.querySelector("#view .split");if(!s)return;s.classList.add("sp-hidden");s.dataset.spk=key;
+ s.insertAdjacentHTML("beforebegin",`<div class="sp-note" data-sp-for="${key}"><span>This ${what} draws relationships from <b>every book</b>, so it will spoil who ends up with whom.</span><button class="chip" type="button" data-reveal="${key}">Show it anyway</button></div>`)}
+
+/* ============ AFFILIATE SETTINGS ============
+   Paste your Amazon Associates tracking ID between the quotes (e.g. "readersatlas-22").
+   Every "Buy the book" link updates automatically. Leave blank until approved. */
+const AMAZON_TAG="";
+const affUrl=title=>"https://www.amazon.com.au/s?k="+encodeURIComponent("Stephenie Meyer "+title)+(AMAZON_TAG?"&tag="+encodeURIComponent(AMAZON_TAG):"");
+const affRel="noopener"+(AMAZON_TAG?" sponsored":"");
+const CART='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>';
+document.getElementById("readbooks").addEventListener("click",()=>{show("books");gq.blur()});
+
+/* ============ TABS ============ */
+const TABS=[["books","Book Guide"],["characters","Characters"],["world","Timeline & Towns"],["recaps","Recaps"],["family","Family Tree"],["map","Connections Map"]];
+const TSHORT={books:"Books",characters:"Cast",world:"Towns",recaps:"Recaps",family:"Family",map:"Map"};
+let current=store.get("twiTab","books");
+if(location.hash&&TABS.some(t=>t[0]===location.hash.slice(1)))current=location.hash.slice(1);
+if(!TABS.some(t=>t[0]===current))current="books";
+const TICON={
+ books:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+ characters:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.2-6 8-6s6.8 2 8 6"/>',
+ world:'<path d="M3 20l5-9 3 5 3-7 7 11z"/><path d="M7 20v-3M17 20v-4"/>',
+ recaps:'<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/>',
+ family:'<circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5V12M5 16.5V12h14v4.5"/>',
+ map:'<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="9" cy="18" r="2.5"/><path d="M8.5 6.2 15.5 7.6M6.6 8.4 8.4 15.6M16.6 10.1 10.6 16.2"/>'};
+function renderTabs(){$("#tabs").innerHTML=TABS.map(([k,l])=>`<button role="tab" aria-selected="${k===current}" data-tab="${k}" aria-label="${l}"><svg class="tabicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${TICON[k]}</svg><span class="tl-l">${l}</span><span class="ts">${TSHORT[k]}</span></button>`).join("")}
+let lastW=innerWidth;
+addEventListener("resize",()=>{clearTimeout(window._rz);window._rz=setTimeout(()=>{if(Math.abs(innerWidth-lastW)<40)return;lastW=innerWidth;if(current==="family")renderFamily();if(current==="map")renderMap()},250)});
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b)show(b.dataset.tab)});
+function show(t,after){current=t;store.set("twiTab",t);renderTabs();({books:renderBooks,characters:renderChars,world:renderWorld,recaps:renderRecaps,family:renderFamily,map:renderMap})[t]();window.scrollTo({top:0});if(after)requestAnimationFrame(after)}
+function flash(el){if(!el)return;el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});el.classList.add("flash");setTimeout(()=>el.classList.remove("flash"),2200)}
+
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(!b)return;go(b.dataset.go)});
+function go(ref){const i=ref.indexOf(":"),k=ref.slice(0,i),id=ref.slice(i+1);
+ if(k==="char"){Object.assign(charState,{q:"",role:"all",ser:"all",bk:"all",fac:"all"});show("characters",()=>flash(document.getElementById("c-"+id)))}
+ else if(k==="book"){bookSer="all";show("books",()=>flash(document.getElementById("b-"+id)))}
+ else if(k==="world"){Object.assign(worldState,{era:"all",bk:"all",reg:"all"});show("world",()=>{const el=document.getElementById(id);if(el&&el.dataset.pl)selectPlace(el.dataset.pl);flash(el)})}
+ else if(k==="recap"){recapBook=id;recapQ="";show("recaps")}
+ else if(k==="fam"){famFocus=id;show("family")}
+ else if(k==="map"){mapFocus=id;show("map")}}
+
+/* ============ BOOK GUIDE ============ */
+const ord=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+let bookSer=store.get("twiBookSer","all");
+const WIP=`<p class="note wip"><b>Work in progress.</b> The Twilight Reader's Guide is still being built, and new details, characters and recaps are being added. If you spot something that needs fixing, message me on Instagram at <a href="https://www.instagram.com/readers.atlas" target="_blank" rel="noopener">@readers.atlas</a>.</p>`;
+/* ============ BOOK COVERS ============
+   Covers load from Open Library by ISBN (first ISBN that has a cover wins). To use your own image instead,
+   add cover:"covers/twilight.jpg" to that book in BOOKLIST. If nothing loads, the coloured spine shows. */
+const coverSrc=isbn=>"https://covers.openlibrary.org/b/isbn/"+isbn+"-L.jpg?default=false";
+function coverImg(b){const xs=String(b.isbn||"").split(" ").filter(Boolean);const first=b.cover||(xs[0]&&coverSrc(xs[0]));if(!first)return"";
+ return `<img src="${esc(first)}" alt="Cover of ${esc(b.title)}" loading="lazy" decoding="async" data-next="${esc((b.cover?xs:xs.slice(1)).join(" "))}" onload="this.parentNode.classList.add('has-img')" onerror="coverFail(this)">`}
+function coverFail(img){const xs=(img.dataset.next||"").split(" ").filter(Boolean);if(xs.length){img.dataset.next=xs.slice(1).join(" ");img.src=coverSrc(xs[0])}else img.remove()}
+function bookCard(b){const key="bk-"+b.c,i=bi(b.c);
+ const body=`<p class="eyebrow">Read ${ord(i+1)} · ${esc(b.s==="saga"?"Twilight Saga "+b.n:"Companion · "+b.n)} · ${b.year}</p><h3>${esc(b.title)}</h3><p class="trope">${esc(b.trope)}</p><span class="lbl" style="margin-top:10px">Main plot</span><p class="bk-plot" style="margin-top:2px">${esc(b.plot)}</p><span class="lbl" style="margin-top:10px">Main characters</span><div class="castlist">${b.cast.map(charLink).join("")}</div>`;
+ return `<article class="card" id="b-${b.c}" style="border-top:3px solid ${BSER[b.s].col}"><div class="bookcard"><div class="cover"><div class="spine${b.dark?" dark":""}" style="background:${b.col}"><span>${esc((b.abbr||b.title).replace(/^(A|The) /,""))}</span></div>${coverImg(b)}</div><div>${sp(b.sp>=0&&hideField(b.sp),key,body,"div")}
+  <div class="bk-actions"><a class="buybtn" href="${affUrl(b.title)}" target="_blank" rel="${affRel}">${CART}Buy the book</a><button class="buybtn ghost" data-go="recap:${b.c}">Recap</button></div></div></div></article>`}
+function renderBooks(){
+ const v=$("#view");store.set("twiBookSer",bookSer);
+ const order=BOOKLIST.map((b,i)=>`<li style="border-top:3px solid ${BSER[b.s].col}" class="${bookSer!=="all"&&bookSer!==b.s?"dim":""}"><span class="n">Read ${ord(i+1)} · ${esc(b.s==="saga"?"Saga "+b.n:"Companion")}</span><b>${esc(b.abbr||b.title)}</b>${b.year}</li>`);
+ order.push(`<li class="opt${bookSer==="saga"?" dim":""}"><span class="n">Optional extra</span><b>The Official Illustrated Guide</b>2011 · the encyclopedia: backstories, family histories, maps</li>`);
+ order.push(`<li class="soon"><span class="n">Someday · Twilight world</span><b>${esc(UPCOMING.title)}</b>${esc(UPCOMING.date)}</li>`);
+ const groups=bookSer==="all"?["saga","comp"]:[bookSer];
+ v.innerHTML=`<p class="eyebrow">Start here</p><h2>Book Guide</h2>
+ <p class="lede">Four books in the main saga, plus three companions that retell or sit alongside it. This is the order I'd read them in: the saga in order with Bree Tanner slotted in after Eclipse (it spoils Eclipse's ending), then Midnight Sun and Life and Death, which both retell Twilight. Premises only here; full plots live in Recaps.</p>
+ ${WIP}
+ <div class="controls seg"><span class="lbl">Show</span>${[["all","All books"],["saga","The Twilight Saga"],["comp","Companion novels"]].map(([k,l])=>`<button class="chip" data-bs="${k}" aria-pressed="${bookSer===k}">${k==="all"?"":sw(BSER[k].col)}${l}</button>`).join("")}</div>
+ <ol class="order">${order.join("")}</ol>
+ <p class="note">Publication order is slightly different: Midnight Sun (2020) came out last and Life and Death (2015) before it. Either works. Midnight Sun reads best once you know how the saga ends.</p>
+ ${groups.map(s=>`<div class="group-h"><h3>${sw(BSER[s].col)}${esc(BSER[s].name)}</h3><span>${s==="saga"?"Bella's story, books 1–4":"Novella, Edward's side and the reimagining"}</span></div>
+ <div class="grid wide">${BOOKLIST.filter(b=>b.s===s).map(bookCard).join("")}
+ ${s==="comp"?`<article class="card" id="b-next" style="border-style:dashed"><div class="bookcard"><div class="cover"><div class="spine" style="background:#6f7478"><span>Coming?</span></div></div><div><p class="eyebrow">Twilight world · ${esc(UPCOMING.date)}</p><h3>${esc(UPCOMING.title)}</h3>${sp(hideItem(bi("BD")),"bk-next",`<p class="bk-plot">${esc(UPCOMING.note)}</p>`,"div")}</div></div></article>`:""}</div>`).join("")}`;
+ v.querySelectorAll("[data-bs]").forEach(b=>b.addEventListener("click",()=>{bookSer=b.dataset.bs;renderBooks()}));
+}
+
+/* ============ CHARACTERS ============ */
+const charState=Object.assign({q:"",role:"all",ser:"all",bk:"all",fac:"all"},store.get("twiChars",{}));
+const APPEARS={};
+const addAp=(id,b)=>{if(C[id]&&BIDX[b]!==undefined)(APPEARS[id]??=new Set).add(b)};
+BOOKLIST.forEach(b=>b.cast.forEach(id=>addAp(id,b.c)));
+CHARS.forEach(c=>String(c.books).split(" ").forEach(b=>addAp(c.id,b)));
+EDGES.forEach(([a,b,,,bk])=>{addAp(a,bk);addAp(b,bk)});
+/* the saga's cast are in Midnight Sun too */
+["edward","bella","charlie","alice","jasper","rosalie","emmett","carlisle","esme","jacob","billy","mike","jessica","angela","tyler","james","victoria","laurent","renee","tanya"].forEach(id=>addAp(id,"MS"));
+const FORDER=Object.keys(FACT);
+function charCard(c){
+ const f=firstBook(c.books),key="c-"+c.id;
+ const rv=Math.max(f,c.rev?bi(c.rev):f);
+ const featR=risk(c.feat,-1),aboutR=risk(c.about,-1),jobR=risk(c.job,c.jobB?bi(c.jobB):-1),loveR=risk(c.love,c.loveB?bi(c.loveB):f),twR=risk(c.twist,c.twB?bi(c.twB):f),stR=risk(c.story,c.stB?bi(c.stB):rv),ageR=risk(c.age,-1),akaR=risk(c.aka,-1);
+ const sers=[...new Set([...(APPEARS[c.id]||[])].map(b=>BOOKLIST[bi(b)].s))].sort().reverse().map(s=>BSER[s].name).join(" · ");
+ const t=TOWN[c.fromT];
+ const inner=`<div class="card-top"><div><h3>${esc(dispName(c))}</h3><div class="aka">${sp(hideField(akaR),key+"-ak",esc(c.aka))}</div></div><div class="pills">${sp(hideField(rv),key+"-al",alignPill(c.role))}${statusPill(c,key)}</div></div>
+ <dl class="kv">${PRON[c.id]?`<dt>Say it</dt><dd style="font-family:var(--mono);font-size:.84rem;letter-spacing:.06em">${esc(PRON[c.id])}</dd>`:""}
+ <dt>From</dt><dd>${esc(c.from)}${t?` · <button class="lnk" data-go="world:${t.id}">${esc(t.name.split(",")[0])}</button>`:""}</dd>
+ <dt>Group</dt><dd>${fsw(c.s)}${esc(facName(c.s))}</dd>
+ <dt>Series</dt><dd>${esc(sers)}</dd>
+ ${c.job?`<dt>Job</dt><dd>${sp(hideField(jobR),key+"-jb",esc(c.job))}</dd>`:""}
+ ${c.feat?`<dt>Features</dt><dd>${sp(hideField(featR),key+"-ft",esc(c.feat))}</dd>`:""}
+ <dt>About</dt><dd>${sp(hideField(aboutR),key+"-ab",esc(c.about))}</dd>
+ ${c.love?`<dt>Love interest</dt><dd>${sp(hideField(loveR),key+"-lv",esc(c.love))}</dd>`:""}
+ ${c.age?`<dt>Age</dt><dd>${sp(hideField(ageR),key+"-ag",esc(c.age))}</dd>`:""}</dl>
+ ${c.twist?`<div class="death"><b class="lbl">Big moment</b>${sp(hideField(twR),key+"-tw",esc(c.twist))}</div>`:""}
+ ${c.story?`<div class="agenda"><b>Later on</b>${sp(hideField(stR),key+"-st",esc(c.story))}</div>`:""}
+ <div class="links">${FAMILIES.some(fm=>fm.gens.flat().includes(c.id))?`<button class="lnk" data-go="fam:${c.id}">Family tree</button> · `:""}${EDGES.some(e=>e[0]===c.id||e[1]===c.id)?`<button class="lnk" data-go="map:${c.id}">Connections</button>`:""}</div>
+ <div class="books">First appears: ${esc(bookTag(c.books))}</div>`;
+ return `<article class="card" id="${key}" style="border-top:3px solid ${FCOL[c.s]}">${hideItem(f)?sp(true,key,inner,"div"):inner}</article>`}
+const bookOpts=ser=>Object.keys(BSER).filter(s=>ser==="all"||ser===s).map(s=>`<optgroup label="${esc(BSER[s].name)}">${BOOKLIST.filter(b=>b.s===s).map(b=>`<option value="${b.c}">${esc(b.abbr||b.title)}</option>`).join("")}</optgroup>`).join("");
+function renderChars(){
+ const v=$("#view");
+ v.innerHTML=`<p class="eyebrow">Who's who in Forks and beyond</p><h2>Characters</h2>
+ <p class="lede">Everyone who matters, with how to say their name, where they're from, what they do, looks and personality, love interest and rough age. Vampire ages are given as the age they were frozen at. Pronunciations are common readings, not official ones.</p>
+ <div class="controls"><input type="search" id="cq" placeholder="Search names, gifts, partners…" value="${esc(charState.q)}" aria-label="Search characters">
+ <select id="cs" aria-label="Filter by series"><option value="all">All series</option>${Object.keys(BSER).map(k=>`<option value="${k}">${esc(BSER[k].name)}</option>`).join("")}</select>
+ <select id="cb" aria-label="Filter by book"></select>
+ <select id="cf" aria-label="Filter by group"><option value="all">All groups</option>${FORDER.map(k=>`<option value="${k}">${esc(FACT[k].name)}</option>`).join("")}</select></div>
+ <div class="controls seg">${["all","lead","sup","bad"].map(a=>`<button class="chip" data-al="${a}" aria-pressed="${charState.role===a}">${{all:"All",lead:"Main",sup:"Supporting",bad:"Antagonists"}[a]}</button>`).join("")}<span class="count" id="ccount"></span></div><div id="clist"></div>`;
+ $("#cs").value=charState.ser;$("#cf").value=charState.fac;
+ const fillBooks=()=>{if(charState.bk!=="all"&&charState.ser!=="all"&&BOOKLIST[bi(charState.bk)].s!==charState.ser)charState.bk="all";$("#cb").innerHTML=`<option value="all">${charState.ser==="all"?"All books":"All "+esc(BSER[charState.ser].name)}</option>`+bookOpts(charState.ser);$("#cb").value=charState.bk};
+ fillBooks();
+ const draw=()=>{store.set("twiChars",{ser:charState.ser,bk:charState.bk,fac:charState.fac});
+  const q=charState.q.trim().toLowerCase();
+  const revealed=c=>!c.rev||!hideField(bi(c.rev));
+  const list=CHARS.filter(c=>(charState.ser==="all"||[...(APPEARS[c.id]||[])].some(b=>BOOKLIST[bi(b)].s===charState.ser))&&(charState.bk==="all"||APPEARS[c.id]?.has(charState.bk))&&(charState.fac==="all"||c.s===charState.fac)&&(charState.role==="all"||(c.role===charState.role&&revealed(c)))&&(!q||[dispName(c),c.aka,c.job,c.feat,c.about,c.love,c.from,facName(c.s),PRON[c.id]].join(" ").toLowerCase().includes(q)));
+  $("#ccount").textContent=`${list.length} of ${CHARS.length}`;
+  if(!list.length){$("#clist").innerHTML=`<p class="empty">No one matches that.</p>`;return}
+  $("#clist").innerHTML=FORDER.map(k=>{const xs=list.filter(c=>c.s===k);return xs.length?`<div class="group-h"><h3>${fsw(k)}${esc(FACT[k].name)} <span style="font-family:var(--body);font-size:.88rem;color:var(--muted);letter-spacing:0">· ${esc(FACT[k].d)}</span></h3><span>${xs.length}</span></div><div class="grid">${xs.map(charCard).join("")}</div>`:""}).join("")};
+ draw();
+ $("#cq").addEventListener("input",e=>{charState.q=e.target.value;draw()});
+ $("#cs").addEventListener("change",e=>{charState.ser=e.target.value;fillBooks();draw()});
+ $("#cb").addEventListener("change",e=>{charState.bk=e.target.value;draw()});
+ $("#cf").addEventListener("change",e=>{charState.fac=e.target.value;draw()});
+ v.querySelectorAll("[data-al]").forEach(b=>b.addEventListener("click",()=>{charState.role=b.dataset.al;v.querySelectorAll("[data-al]").forEach(x=>x.setAttribute("aria-pressed",x===b));draw()}));
+}
+
+/* ============ TIMELINE & TOWNS ============ */
+let placeSel=null;
+const worldState=Object.assign({era:"all",bk:"all",reg:"all"},store.get("twiWorld",{}));
+function selectPlace(id){placeSel=id;document.querySelectorAll("[data-pl]").forEach(n=>n.classList.toggle("on",n.dataset.pl===id))}
+function renderWorld(){
+ const v=$("#view");store.set("twiWorld",worldState);
+ const towns=TOWNS.filter(t=>worldState.reg==="all"||t.region===worldState.reg).map(t=>{
+  const lm=t.places.map(([n,d,b,flag],i)=>{const r=bi(b),hid=hideItem(r)||(flag&&hideField(r));return`<li><b>${esc(n)}</b>${sp(hid,t.id+"-p"+i,` <span style="color:var(--muted)">${esc(d)}</span>`)}</li>`}).join("");
+  const books=t.books.map(c=>`<button class="lnk" data-go="book:${c}">${esc(BOOKS[c])}</button>`).join(" · ");
+  const card=`<p class="eyebrow">${t.region==="wa"?"Washington State":"Further afield"}</p><h3>${esc(t.name)}</h3><div class="aka">${esc(t.hub)}</div>
+  <p style="margin:8px 0 0;font-size:.95rem">${esc(t.d)}</p><span class="lbl" style="margin-top:12px">Places to know</span><ul class="lm">${lm}</ul><div class="books">Books: ${books}</div>`;
+  return `<article class="card town" id="${t.id}" style="border-top:4px solid ${t.col};--wc:${t.col}">${hideItem(bi(t.b))?sp(true,t.id+"-all",card,"div"):card}</article>`}).join("");
+ const tl=TIMELINE.map((x,i)=>[x,i]).filter(([[w,t,d,b,isB,era]])=>(worldState.era==="all"||era===worldState.era)&&(worldState.bk==="all"||b===worldState.bk)).map(([[w,t,d,b,isB],i])=>{const r=bi(b),hid=isB?hideItem(r):hideField(r)||hideField(later(d));const bk=BOOKLIST[r];return`<li id="tl-${i}" class="${isB?"bk":""}" style="--wc:${BSER[bk.s].col}"><div class="when">${esc(w)}</div>${sp(hid,"tl-"+i,`<b>${isB?`<button class="lnk" data-go="book:${b}" style="font-weight:700;text-decoration:none">${esc(t)}</button>`:esc(t)}</b><p>${esc(d)}</p>`,"div")}</li>`}).join("")||`<li><p>Nothing in this filter.</p></li>`;
+ const pins=PLACES.map((p,i)=>`<g class="pin" data-pl="${p.id}" tabindex="0" role="button" aria-label="${esc(p.name)}"><circle cx="${p.x}" cy="${p.y}" r="8"/><text x="${p.x}" y="${p.y+3.5}" text-anchor="middle" style="font-size:9px;fill:#fff">${i+1}</text><text x="${p.x+(p.lx??12)}" y="${p.y+(p.ly??-9)}" text-anchor="${p.anc||"start"}" style="font-size:12px">${esc(p.name)}</text></g>`).join("");
+ const chip=(attr,k,l,cur)=>`<button class="chip" data-${attr}="${k}" aria-pressed="${cur===k}">${l}</button>`;
+ v.innerHTML=`<p class="eyebrow">Where and when</p><h2>Timeline &amp; Towns</h2>
+ <p class="lede">The places that matter, from rainy Forks to Volterra, a timeline that runs from Quileute legend to the Volturi in the snow, and a map of the Olympic Peninsula.</p>
+ <div class="subnav"><a class="lnk" href="#towns-h">Places</a><a class="lnk" href="#tl-h">Timeline</a><a class="lnk" href="#map-h">Map</a></div>
+ <h3 class="sec-h" id="towns-h">The places</h3>
+ <div class="controls seg"><span class="lbl">Show</span>${chip("rg","all","All places",worldState.reg)}${chip("rg","wa","Washington",worldState.reg)}${chip("rg","far","Further afield",worldState.reg)}</div>
+ <div class="grid wide">${towns}</div>
+ <h3 class="sec-h" id="tl-h">Timeline</h3>
+ <div class="controls seg"><span class="lbl">Era</span>${chip("era","all","All",worldState.era)}${chip("era","hist","Before the books",worldState.era)}${chip("era","saga","During the books",worldState.era)}
+ <select id="tlb" aria-label="Filter timeline by book"><option value="all">Any book</option>${BOOKLIST.map(b=>`<option value="${b.c}">${esc(b.abbr||b.title)}</option>`).join("")}</select></div>
+ <p class="note">Filled dots are the books. Dates for the vampires' pasts come from the books and the Official Illustrated Guide; the saga itself runs over about two years of Bella's life.</p>
+ <ol class="tl">${tl}</ol>
+ <h3 class="sec-h" id="map-h">The map</h3>
+ <p class="note">Fan-made schematic, not to scale. Forks, La Push, Port Angeles and Seattle are real; the Cullen house, the meadow and the clearing are placed by clues in the books. Tap a pin.</p>
+ <div class="mapwrap"><div class="mapsvg"><svg viewBox="0 0 680 460" role="img" aria-label="Schematic map of the Olympic Peninsula and Puget Sound">
+  <rect class="sea" width="680" height="460"/>
+  <path class="land" d="M70 96 C170 76 320 70 470 86 L486 150 L468 232 L490 304 L466 380 L440 460 L84 460 C76 410 62 360 70 318 C52 268 74 220 58 176 C70 140 56 118 70 96 Z"/>
+  <path class="land" d="M548 30 L680 30 L680 460 L528 460 L546 372 L526 290 L552 204 L532 120 Z"/>
+  <path class="mtn" d="M236 196 l18 -30 l18 30 z M268 186 l22 -38 l22 38 z M306 200 l18 -30 l18 30 z M282 226 l16 -26 l16 26 z"/>
+  <text x="300" y="168" text-anchor="middle" class="sm">Olympic Mountains</text>
+  <text x="250" y="52" text-anchor="middle" class="sm">Strait of Juan de Fuca</text>
+  <text x="28" y="250" class="sm" transform="rotate(-90 28 250)">Pacific Ocean</text>
+  <text x="508" y="300" class="sm" transform="rotate(-90 508 300)">Puget Sound</text>
+  <text x="260" y="330" text-anchor="middle" style="font-family:var(--display);font-size:16px;fill:var(--muted)">Olympic National Forest</text>
+  <path class="treaty" d="M136 150 C140 220 128 300 140 420"/>
+  <text x="120" y="440" class="sm">treaty line</text>
+  <path class="road" d="M176 292 C190 200 270 116 350 104 C430 96 500 150 586 250"/>
+  ${pins}
+ </svg></div>
+ <div class="places">${PLACES.map((p,i)=>`<button class="place" id="${p.id}" data-pl="${p.id}"><span class="n">${i+1}</span><b>${esc(p.name)}</b><br><span style="color:var(--muted)">${sp(hideItem(bi(p.b)),"pl-"+i,esc(p.d))}</span></button>`).join("")}
+  <p class="fine" style="margin-top:4px">Further afield: <button class="lnk" data-go="world:town-phx">Phoenix</button> · <button class="lnk" data-go="world:town-jax">Jacksonville</button> · <button class="lnk" data-go="world:town-denali">Denali, Alaska</button> · <button class="lnk" data-go="world:town-volterra">Volterra, Italy</button> · <button class="lnk" data-go="world:town-isle">Isle Esme, Brazil</button></p></div></div>`;
+ $("#tlb").value=worldState.bk;
+ const re=()=>{const y=scrollY;renderWorld();scrollTo({top:y})};
+ v.querySelectorAll("[data-rg]").forEach(b=>b.addEventListener("click",()=>{worldState.reg=b.dataset.rg;re()}));
+ v.querySelectorAll("[data-era]").forEach(b=>b.addEventListener("click",()=>{worldState.era=b.dataset.era;re()}));
+ $("#tlb").addEventListener("change",e=>{worldState.bk=e.target.value;re()});
+ v.querySelectorAll("[data-pl]").forEach(n=>{n.addEventListener("click",()=>{selectPlace(n.dataset.pl);if(n.tagName!=="BUTTON")flash(document.getElementById(n.dataset.pl))});
+  n.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();n.dispatchEvent(new Event("click"))}})});
+ if(placeSel)selectPlace(placeSel);
+}
+
+/* ============ RECAPS ============ */
+let recapBook=store.get("twiRecap","TW"),recapQ="",recapSer="all";
+const recapText=c=>{const r=RECAPS[c];return[BOOKLIST[bi(c)].title,r.start,r.events.join(" "),r.end,r.remember.join(" ")].join(" ")};
+function renderRecaps(){
+ const v=$("#view");store.set("twiRecap",recapBook);
+ const b=BOOKLIST.find(x=>x.c===recapBook)||BOOKLIST[0],r=RECAPS[b.c],idx=bi(b.c),key="rc-"+b.c;
+ const body=`<p class="eyebrow">Read ${ord(idx+1)} · ${esc(BSER[b.s].name)} · ${b.year}</p><h3>${esc(b.title)}</h3>
+  <h4>Where it starts</h4><p>${esc(r.start)}</p>
+  <h4>What happens</h4><ul>${r.events.map(e=>`<li>${esc(e)}</li>`).join("")}</ul>
+  <h4>How it ends</h4><p>${esc(r.end)}</p>
+  <div class="remember"><h4>Remember this going into the next book</h4><ul>${r.remember.map(e=>`<li>${esc(e)}</li>`).join("")}</ul></div>`;
+ const hid=hideField(idx);
+ const sers=recapSer==="all"?Object.keys(BSER):[recapSer];
+ const chips=sers.map(s=>`<div class="rc-row"><span class="rc-s">${sw(BSER[s].col)}${esc(BSER[s].name)}</span>${BOOKLIST.filter(x=>x.s===s).map(x=>`<button class="chip" data-rb="${x.c}" aria-pressed="${x.c===b.c}">${esc((x.abbr||x.title).replace(/^(A|The) /,""))}</button>`).join("")}</div>`).join("");
+ v.innerHTML=`<p class="eyebrow">Previously, in Forks…</p><h2>Book Recaps</h2>
+ <p class="lede">Full-spoiler summaries for when you pick up the next book and can't remember a thing. Pick the book you just finished, or search for a scene.</p>
+ <div class="controls"><input type="search" id="rq" placeholder="Search recaps: the meadow, Volterra, the treaty…" value="${esc(recapQ)}" aria-label="Search recaps">
+ <select id="rs" aria-label="Filter recaps by series"><option value="all">All series</option>${Object.keys(BSER).map(k=>`<option value="${k}">${esc(BSER[k].name)}</option>`).join("")}</select></div>
+ <div class="rq-res" id="rqres"></div>
+ <div class="rc-chips">${chips}</div>
+ ${hid&&!SPK.has(key)?`<div class="sp-note" data-sp-for="${key}"><span>This recap spoils <b>all of ${esc(b.title)}</b>, which you haven't finished.</span><button class="chip" type="button" data-reveal="${key}">Show it anyway</button></div>`:""}
+ <article class="card recap" style="border-top:3px solid ${BSER[b.s].col}">${sp(hid,key,body,"div")}</article>
+ <p class="links">${idx>0?`<button class="lnk" data-rb="${BOOKLIST[idx-1].c}">← ${esc(BOOKLIST[idx-1].abbr||BOOKLIST[idx-1].title)}</button>`:""}${idx<BOOKLIST.length-1?` &nbsp; <button class="lnk" data-rb="${BOOKLIST[idx+1].c}">${esc(BOOKLIST[idx+1].abbr||BOOKLIST[idx+1].title)} →</button>`:""} · <a class="lnk" href="${affUrl(b.title)}" target="_blank" rel="${affRel}">Buy ${esc(b.abbr||b.title)}</a></p>`;
+ $("#rs").value=recapSer;
+ const res=()=>{const q=recapQ.trim().toLowerCase();if(q.length<2){$("#rqres").innerHTML="";return}
+  const terms=q.split(/\s+/);
+  const hits=BOOKLIST.filter(x=>recapSer==="all"||x.s===recapSer).filter(x=>{const t=recapText(x.c).toLowerCase();return terms.every(w=>t.includes(w))});
+  $("#rqres").innerHTML=hits.length?hits.map(x=>{const t=recapText(x.c),p=t.toLowerCase().indexOf(terms[0]),snip=t.slice(Math.max(0,p-50),p+90);const h=hideField(bi(x.c));return`<button data-rb="${x.c}"><b>${esc(x.abbr||x.title)}</b><span class="s" style="${h?"filter:blur(5px)":""}">…${esc(snip)}…</span></button>`}).join(""):`<p class="empty" style="padding:8px 0">No recap mentions that.</p>`};
+ res();
+ $("#rq").addEventListener("input",e=>{recapQ=e.target.value;res()});
+ $("#rs").addEventListener("change",e=>{recapSer=e.target.value;if(recapSer!=="all"&&b.s!==recapSer)recapBook=BOOKLIST.find(x=>x.s===recapSer).c;renderRecaps()});
+ const pick=x=>{recapBook=x.dataset.rb;recapQ="";renderRecaps();window.scrollTo({top:0})};
+ v.querySelectorAll("[data-rb]").forEach(x=>x.addEventListener("click",()=>pick(x)));
+ $("#rqres").addEventListener("click",e=>{const x=e.target.closest("[data-rb]");if(x)pick(x)});
+}
+
+/* ============ FAMILY TREE ============ */
+let famFocus=null;
+function famInfo(id){const c=C[id];if(c)return{name:dispName(c),sub:c.aka,dead:c.status==="dead",role:c.role};const x=FAMX[id];return{name:x?.name||id,sub:x?.note||"",dead:!!x?.dead}}
+function renderFamily(){
+ const v=$("#view");
+ v.innerHTML=`<p class="eyebrow">Bloodlines, covens &amp; mates</p><h2>Family Tree</h2>
+ <p class="lede">Tap anyone to focus them: their parents, children, siblings and partners light up and everyone else fades. Tap again, or pick a name in the panel, to switch. For the vampires, "parent" means the one who created or adopted them. Links between trees (Jacob and Renesmee, Charlie and Billy) show in the panel.</p>
+ <div class="controls"><select id="fpick" aria-label="Jump to a family"><option value="">Jump to a family…</option>${FAMILIES.map((f,i)=>`<option value="${i}">${esc(f.name)}</option>`).join("")}</select></div>
+ <div class="legend"><span><i style="background:var(--fam)"></i>Parent / child (or creator)</span><span><i style="background:var(--love)"></i>Partner, spouse or mate</span><span><i style="background:var(--ally);opacity:.8"></i>Siblings</span></div>
+ <div class="split"><div class="stage" id="fstage"></div><aside class="panel" id="fpanel"></aside></div>`;
+ const cw=$("#fstage").clientWidth||760,narrow=cw<700;
+ const colGap=narrow?118:150,boxW=narrow?110:136,boxH=46;
+ const maxGen=Math.max(...FAMILIES.flatMap(f=>f.gens.map(g=>g.length)));
+ const W=Math.max(narrow?cw:760,maxGen*colGap+32);
+ const nameFit=id=>{const n=famInfo(id).name.replace(/^Dr\. /,"").replace(/ \(.*\)/,"");return n.length*7.2>boxW-8?n.split(" ")[0]:n};
+ const subMax=Math.floor(boxW/6.1);
+ let y=20,parts=[],nodes={},edges=[],famY=[];
+ FAMILIES.forEach((f,fi)=>{famY[fi]=y;
+  parts.push(`<text x="16" y="${y+14}" style="font-family:var(--display);font-weight:600;font-size:17px;fill:var(--bronze)">${esc(f.name)}</text>`);y+=30;
+  f.gens.forEach(gen=>{const total=gen.length*colGap;const x0=Math.max(16,(W-total)/2);
+   gen.forEach((id,i)=>{nodes[id]={x:x0+i*colGap+(colGap-boxW)/2,y,fam:f.name}});y+=boxH+40});
+  (f.links||[]).forEach(l=>edges.push([...l,"fam"]));(f.spouse||[]).forEach(l=>edges.push([...l,"love"]));
+  (f.sib||[]).forEach(l=>edges.push([...l,"ally"]));y+=10});
+ CROSS.forEach(e=>edges.push(e));
+ const H=y;
+ const adj={};edges.forEach(([a,b])=>{(adj[a]??=new Set).add(b);(adj[b]??=new Set).add(a)});
+ const parents={};edges.filter(e=>e[2]==="fam"&&!e[3]).forEach(([p,c])=>(parents[c]??=[]).push(p));
+ Object.keys(parents).forEach(c=>Object.keys(parents).forEach(d=>{if(c!==d&&parents[c].some(p=>parents[d].includes(p)))adj[c].add(d)}));
+ const path=(a,b,t,x)=>{const A=nodes[a],B=nodes[b];if(!A||!B||x||A.fam!==B.fam)return"";
+  const ax=A.x+boxW/2,bx=B.x+boxW/2;
+  if(t==="fam")return`M${ax},${A.y+boxH} C${ax},${A.y+boxH+22} ${bx},${B.y-22} ${bx},${B.y}`;
+  const [L,R]=A.x<B.x?[A,B]:[B,A];
+  if(Math.abs(L.y-R.y)<2&&R.x-L.x>colGap+1)return`M${L.x+boxW/2},${L.y} C${L.x+boxW/2},${L.y-22} ${R.x+boxW/2},${R.y-22} ${R.x+boxW/2},${R.y}`;
+  return`M${L.x+boxW},${L.y+boxH/2} L${R.x},${R.y+boxH/2}`};
+ const edgeSvg=edges.map(([a,b,t,x])=>{const d=path(a,b,t,x);return d?`<path class="edge" data-a="${a}" data-b="${b}" d="${d}" stroke="var(--${t})" ${t!=="fam"?'stroke-dasharray="5 4"':""}/>`:""}).join("");
+ const nodeSvg=Object.entries(nodes).map(([id,n])=>{const i=famInfo(id),c=C[id];return`<g class="node ${i.dead?"dead":""}" data-id="${id}" tabindex="0" role="button" aria-label="${esc(i.name)}" transform="translate(${n.x},${n.y})"><rect width="${boxW}" height="${boxH}" rx="5" ${c?`style="stroke:${FCOL[c.s]}"`:""}/><text x="${boxW/2}" y="19" text-anchor="middle" style="font-weight:700;font-size:13px">${esc(nameFit(id))}</text><text x="${boxW/2}" y="35" text-anchor="middle" style="font-size:11px;fill:var(--muted)">${esc(((i.dead?"† ":"")+i.sub).slice(0,subMax))}</text></g>`}).join("");
+ $("#fstage").innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Family trees">${parts.join("")}${edgeSvg}${nodeSvg}</svg>`;
+ const panel=$("#fpanel");
+ const label=(id,o,t,x,a)=>Array.isArray(x)?(a===id?x[0]:x[1]):x||(t==="love"?"Partner / mate":t==="ally"?"Sibling":(a===id?"Child":"Parent"));
+ function focus(id){famFocus=id;
+  const svg=$("#fstage svg");svg.querySelectorAll(".node").forEach(g=>{const k=g.dataset.id;g.classList.toggle("focus",k===id);g.classList.toggle("near",!!id&&!!adj[id]?.has(k));g.classList.toggle("dim",!!id&&k!==id&&!adj[id]?.has(k))});
+  svg.querySelectorAll(".edge").forEach(e=>e.classList.toggle("dim",!!id&&e.dataset.a!==id&&e.dataset.b!==id));
+  panel.classList.toggle("idle",!id);
+  if(!id){panel.innerHTML=`<p class="eyebrow">No one selected</p><p style="margin:6px 0 0;color:var(--muted)">Pick a name in the tree to see their parents, children, siblings and partners.</p>`;return}
+  const i=famInfo(id),c=C[id];
+  const seen=new Set();
+  const rel=edges.filter(e=>e[0]===id||e[1]===id).map(([a,b,t,x])=>{const o=a===id?b:a;seen.add(o);return`<li><span class="eyebrow" style="display:inline-block;min-width:110px">${esc(label(id,o,t,x,a))}</span>${nodes[o]?`<button class="lnk" data-ff="${o}">${esc(nm(o))}</button>`:C[o]?charLink(o):esc(nm(o))}</li>`});
+  const sibs=[...(adj[id]||[])].filter(o=>!seen.has(o)&&parents[id]&&parents[o]&&parents[id].some(p=>parents[o].includes(p))).map(o=>`<li><span class="eyebrow" style="display:inline-block;min-width:110px">Sibling</span><button class="lnk" data-ff="${o}">${esc(nm(o))}</button></li>`);
+  panel.innerHTML=`<button class="sheet-close" data-close>Close</button><p class="eyebrow">${c?fsw(c.s)+esc(facName(c.s)):"Focused"}</p><h3>${esc(i.name)}</h3>${c?`<div class="pills" style="justify-content:flex-start;margin-top:6px">${alignPill(c.role)}${statusPill(c,"f-"+id)}</div>`:""}<p style="margin:8px 0 0;color:var(--muted);font-size:.92rem">${esc(c?c.conn:i.sub)}</p><ul>${rel.join("")}${sibs.join("")}</ul>${c?`<p style="margin-top:12px"><button class="lnk" data-go="char:${id}">Full profile</button> · <button class="lnk" data-go="map:${id}">Connections map</button></p>`:""}`}
+ const centre=id=>$(`#fstage .node[data-id="${id}"]`)?.scrollIntoView({block:"center",inline:"center",behavior:"smooth"});
+ $("#fstage").addEventListener("click",e=>{const g=e.target.closest(".node");focus(g&&g.dataset.id!==famFocus?g.dataset.id:null)});
+ $("#fstage").addEventListener("keydown",e=>{const g=e.target.closest(".node");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();focus(g.dataset.id===famFocus?null:g.dataset.id)}});
+ panel.addEventListener("click",e=>{if(e.target.closest("[data-close]"))return focus(null);const b=e.target.closest("[data-ff]");if(b){focus(b.dataset.ff);centre(b.dataset.ff)}});
+ $("#fpick").addEventListener("change",e=>{if(e.target.value==="")return;const fi=+e.target.value;const first=FAMILIES[fi].gens[0].find(x=>C[x])||FAMILIES[fi].gens[0][0];focus(first);$("#fstage").scrollTo({top:famY[fi]-6,behavior:"smooth"});e.target.value=""});
+ const start=famFocus&&nodes[famFocus]?famFocus:(narrow?null:"bella");
+ focus(start);
+ if(start)requestAnimationFrame(()=>centre(start));
+ coverStage("cover-family","family tree");
+}
+
+/* ============ CONNECTIONS MAP ============ */
+let mapFocus=null;
+const mapState={fac:"all",type:"all"};
+const HUB="bella";
+function layout(nodes,links,W,H,narrow){
+ const REP=narrow?2600:5600,LEN=narrow?80:115,PADX=narrow?44:62;
+ const P={};nodes.forEach((n,i)=>{const a=i/nodes.length*Math.PI*2;P[n]={x:W/2+Math.cos(a)*W*.35,y:H/2+Math.sin(a)*H*.35,vx:0,vy:0}});
+ if(P[HUB]){P[HUB].x=W/2;P[HUB].y=H/2}
+ for(let it=0;it<420;it++){const t=1-it/420;
+  for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const a=P[nodes[i]],b=P[nodes[j]];let dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy+.01,d=Math.sqrt(d2),f=REP/d2;a.vx+=dx/d*f;a.vy+=dy/d*f;b.vx-=dx/d*f;b.vy-=dy/d*f}
+  links.forEach(([s,tg])=>{const a=P[s],b=P[tg];if(!a||!b)return;let dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)+.01,f=(d-LEN)*.02;a.vx+=dx/d*f;a.vy+=dy/d*f;b.vx-=dx/d*f;b.vy-=dy/d*f});
+  nodes.forEach(n=>{const p=P[n];p.vx+=(W/2-p.x)*.004;p.vy+=(H/2-p.y)*.004;p.x+=p.vx*t*.5;p.y+=p.vy*t*.5;p.vx*=.6;p.vy*=.6;p.x=Math.max(PADX,Math.min(W-PADX,p.x));p.y=Math.max(30,Math.min(H-30,p.y))})}
+ return P}
+const TYPES=[["all","All ties"],["fam","Family"],["love","Couples"],["friend","Friends"],["ally","Allies & covens"],["foe","Rivals & enemies"]];
+function renderMap(){
+ const v=$("#view");
+ v.innerHTML=`<p class="eyebrow">Who is tied to whom</p><h2>Connections Map</h2>
+ <p class="lede">Every family tie, romance, friendship and feud across all seven books. Tap a person to light up their links and see what connects them. How the books link to each other is listed below the map.</p>
+ <div class="controls"><select id="mpick" aria-label="Focus a character"><option value="">Focus a character…</option>${CHARS.filter(c=>EDGES.some(e=>e[0]===c.id||e[1]===c.id)).sort((a,b)=>nm(a.id).localeCompare(nm(b.id))).map(c=>`<option value="${c.id}">${esc(nm(c.id))}</option>`).join("")}</select>
+ <select id="mfac" aria-label="Filter by group"><option value="all">All groups</option>${FORDER.map(k=>`<option value="${k}">${esc(FACT[k].name)} and their ties</option>`).join("")}</select>
+ <select id="mtype" aria-label="Filter by type of tie">${TYPES.map(([k,l])=>`<option value="${k}">${l}</option>`).join("")}</select></div>
+ <div class="legend"><span><i style="background:var(--fam)"></i>Family &amp; creators</span><span><i style="background:var(--love)"></i>Couples &amp; mates</span><span><i style="background:var(--friend)"></i>Friends</span><span><i style="background:var(--ally)"></i>Allies &amp; covens</span><span><i style="background:var(--foe)"></i>Rivals &amp; enemies</span></div>
+ <div class="split"><div class="stage" id="mstage"></div><aside class="panel" id="mpanel"></aside></div>
+ <h3 class="sec-h">How the books connect</h3>
+ <div class="xover">${XOVER.map((x,i)=>{const b=BOOKLIST[bi(x.bk)];return`<div class="era" id="xo-${i}" style="border-left-color:${BSER[b.s].col}"><div class="when">Pays off in ${esc(b.abbr||b.title)}</div><h3>${esc(x.t)}</h3>${sp(hideField(risk(x.d,bi(x.bk))),"xo-"+i,`<p style="margin:2px 0 0;color:var(--muted)">${esc(x.d)}</p>`,"div")}</div>`}).join("")}</div>`;
+ $("#mfac").value=mapState.fac;$("#mtype").value=mapState.type;
+ const cw=$("#mstage").clientWidth||980,narrow=cw<700;
+ let links=EDGES.map(e=>[...e]);
+ if(mapState.fac!=="all"){const inS=id=>C[id]?.s===mapState.fac;links=links.filter(e=>inS(e[0])||inS(e[1]))}
+ if(mapState.type!=="all")links=links.filter(e=>e[2]===mapState.type);
+ const nodes=[...new Set(links.flatMap(e=>[e[0],e[1]]))];
+ if(!nodes.length){$("#mstage").innerHTML=`<p class="empty">No ties in this filter.</p>`}
+ const W=narrow?Math.max(cw,560):Math.max(cw,1040),H=narrow?Math.round(nodes.length*22+260):Math.max(600,Math.round(nodes.length*13+240));
+ const P=layout(nodes,links,W,H,narrow);
+ const adj={};links.forEach(([a,b])=>{(adj[a]??=new Set).add(b);(adj[b]??=new Set).add(a)});
+ const edgeSvg=links.map(([a,b,t])=>`<line class="edge" data-a="${a}" data-b="${b}" x1="${P[a].x}" y1="${P[a].y}" x2="${P[b].x}" y2="${P[b].y}" stroke="var(--${t})" ${t==="foe"?'stroke-dasharray="6 4"':""}/>`).join("");
+ const nodeSvg=nodes.map(id=>{const p=P[id],c=C[id],label=short(id);const w=Math.max(54,label.length*7.4+26);
+  return`<g class="node ${c?.status==="dead"&&ALL()?"dead":""}" data-id="${id}" tabindex="0" role="button" aria-label="${esc(nm(id))}" transform="translate(${p.x-w/2},${p.y-14})"><rect width="${w}" height="28" rx="14" style="stroke:var(--${c?.role==="bad"?"foe":"line"})"/><circle cx="12" cy="14" r="4.5" style="fill:${FCOL[c?.s]||"#888"};stroke:none"/><text x="${w/2+6}" y="18.5" text-anchor="middle" style="font-size:13px;font-weight:700">${esc(label)}</text></g>`}).join("");
+ if(nodes.length)$("#mstage").innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Character connections">${edgeSvg}${nodeSvg}</svg>`;
+ const panel=$("#mpanel");
+ function focus(id){mapFocus=id;$("#mpick").value=C[id]?id:"";
+  const svg=$("#mstage svg");if(svg){svg.querySelectorAll(".node").forEach(g=>{const k=g.dataset.id;g.classList.toggle("focus",k===id);g.classList.toggle("near",!!id&&!!adj[id]?.has(k));g.classList.toggle("dim",!!id&&k!==id&&!adj[id]?.has(k))});
+  svg.querySelectorAll(".edge").forEach(e=>e.classList.toggle("dim",!!id&&e.dataset.a!==id&&e.dataset.b!==id))}
+  panel.classList.toggle("idle",!id);
+  if(!id){panel.innerHTML=`<p class="eyebrow">No one selected</p><p style="margin:6px 0 0;color:var(--muted)">Tap a name on the map, or choose one above.</p>`;return}
+  const rows=links.filter(e=>e[0]===id||e[1]===id).map(([a,b,t,l,bk])=>{const o=a===id?b:a;return`<li><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--${t});margin-right:8px"></i><button class="lnk" data-mf="${o}">${esc(nm(o))}</button> <span style="color:var(--muted)">· ${sp(hideField(bi(bk)),"e-"+a+b,esc(l))} <span style="font-size:.8rem">(${esc(BOOKS[bk])})</span></span></li>`});
+  const c=C[id];
+  panel.innerHTML=`<button class="sheet-close" data-close>Close</button><p class="eyebrow">${c?fsw(c.s)+esc(facName(c.s)):"Focused"}</p><h3>${esc(nm(id))}</h3>${c?`<div class="pills" style="justify-content:flex-start;margin-top:6px">${alignPill(c.role)}${statusPill(c,"m-"+id)}</div><p style="margin:8px 0 0;color:var(--muted);font-size:.92rem">${esc(c.conn)}</p>`:""}<ul>${rows.join("")}</ul><p style="margin-top:12px">${c?`<button class="lnk" data-go="char:${id}">Full profile</button>${FAMILIES.some(fm=>fm.gens.flat().includes(id))?` · <button class="lnk" data-go="fam:${id}">Family tree</button>`:""}`:""}</p>`}
+ const center=id=>$(`#mstage .node[data-id="${id}"]`)?.scrollIntoView({block:"center",inline:"center",behavior:"smooth"});
+ $("#mstage").addEventListener("click",e=>{const g=e.target.closest(".node");focus(g&&g.dataset.id!==mapFocus?g.dataset.id:null)});
+ $("#mstage").addEventListener("keydown",e=>{const g=e.target.closest(".node");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();focus(g.dataset.id===mapFocus?null:g.dataset.id)}});
+ panel.addEventListener("click",e=>{if(e.target.closest("[data-close]"))return focus(null);const b=e.target.closest("[data-mf]");if(b){focus(b.dataset.mf);center(b.dataset.mf)}});
+ $("#mpick").addEventListener("change",e=>{const id=e.target.value;if(id&&!P[id]){mapState.fac="all";mapState.type="all";mapFocus=id;return renderMap()}focus(id||null);if(id)center(id)});
+ $("#mfac").addEventListener("change",e=>{mapState.fac=e.target.value;renderMap()});
+ $("#mtype").addEventListener("change",e=>{mapState.type=e.target.value;renderMap()});
+ const start=mapFocus&&P[mapFocus]?mapFocus:(narrow?null:(P[HUB]?HUB:null));
+ focus(start);if(start)requestAnimationFrame(()=>center(start));
+ coverStage("cover-map","map");
+}
+
+/* ============ GLOBAL SEARCH ============ */
+const INDEX=[
+ ...BOOKLIST.map(b=>({f:0,hf:b.sp,k:"Book",t:b.title,s:`${BSER[b.s].name} · ${b.year}`,hay:[b.title,b.plot,b.trope,BSER[b.s].name].join(" "),go:"book:"+b.c})),
+ ...BOOKLIST.map(b=>({f:bi(b.c),hf:bi(b.c),k:"Recap",t:(b.abbr||b.title)+" recap",s:"Full-spoiler summary",hay:[b.title,"recap summary",recapText(b.c)].join(" "),go:"recap:"+b.c})),
+ ...CHARS.map(c=>({f:firstBook(c.books),hf:Math.max(later(c.aka),later(c.job)),k:"Character",t:dispName(c),s:`${facName(c.s)} · ${c.aka}`,hay:[dispName(c),c.aka,c.job,c.feat,c.about,c.love,c.from,facName(c.s)].join(" "),go:"char:"+c.id})),
+ ...Object.entries(FACT).map(([k,f])=>({f:0,k:"Group",t:f.name,s:f.d,hay:[f.name,f.d,"coven pack"].join(" "),go:"char:"+(CHARS.find(c=>c.s===k)?.id)})),
+ ...TOWNS.map(t=>({f:bi(t.b),k:"Place",t:t.name,s:t.hub,hay:[t.name,t.hub,t.d,t.places.map(p=>p[0]).join(" ")].join(" "),go:"world:"+t.id})),
+ ...TOWNS.flatMap(t=>t.places.map(([n,d,b,flag])=>({f:bi(b),hf:flag?bi(b):-1,k:"Place",t:n,s:t.name,hay:[n,d,t.name].join(" "),go:"world:"+t.id}))),
+ ...TIMELINE.map((x,i)=>({f:bi(x[3]),hf:x[4]?-1:bi(x[3]),k:"Timeline",t:x[1],s:x[0],hay:x.slice(0,3).join(" "),go:"world:tl-"+i})),
+ ...PLACES.map(p=>({f:bi(p.b),k:"Map",t:p.name,s:"On the map",hay:[p.name,p.d].join(" "),go:"world:"+p.id}))
+];
+const gq=$("#gq"),gres=$("#gres");let gi=-1;
+function gsearch(){const q=gq.value.trim().toLowerCase();gi=-1;if(q.length<2){gres.hidden=true;return}
+ const terms=q.split(/\s+/);
+ const hits=INDEX.map(x=>{const h=x.hay.toLowerCase(),t=x.t.toLowerCase();if(!terms.every(w=>h.includes(w)))return null;return{...x,score:(t.startsWith(q)?3:0)+(t.includes(q)?2:0)+(x.k==="Character"?.5:0)}}).filter(Boolean).sort((a,b)=>b.score-a.score).slice(0,14);
+ gres.innerHTML=hits.length?hits.map(h=>{const hid=hideItem(h.f||0),shid=hid||hideField(h.hf??-1);return hid?`<button data-gg="${h.go}"><span class="k">Spoiler</span><span><b>Hidden spoiler</b><br><span class="s">From a book you haven't reached</span></span></button>`:`<button data-gg="${h.go}"><span class="k">${h.k}</span><span><b>${esc(h.t)}</b><br><span class="s" style="${shid?"filter:blur(5px)":""}">${esc(h.s)}</span></span></button>`}).join(""):`<div style="padding:12px;color:var(--muted)">Nothing found for “${esc(gq.value)}”.</div>`;
+ gres.hidden=false}
+gq.addEventListener("input",gsearch);gq.addEventListener("focus",gsearch);
+gq.addEventListener("keydown",e=>{const bs=[...gres.querySelectorAll("button")];if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();if(!bs.length)return;gi=(gi+(e.key==="ArrowDown"?1:-1)+bs.length)%bs.length;bs[gi]?.focus()}else if(e.key==="Enter"&&bs[0]){bs[0].click()}else if(e.key==="Escape"){gres.hidden=true}});
+gres.addEventListener("keydown",e=>{const bs=[...gres.querySelectorAll("button")];const i=bs.indexOf(document.activeElement);if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();bs[(i+(e.key==="ArrowDown"?1:-1)+bs.length)%bs.length]?.focus()}else if(e.key==="Escape"){gres.hidden=true;gq.focus()}});
+gres.addEventListener("click",e=>{const b=e.target.closest("[data-gg]");if(b){gres.hidden=true;gq.blur();go(b.dataset.gg)}});
+document.addEventListener("click",e=>{if(!e.target.closest(".gsearch"))gres.hidden=true});
+
+const totop=$("#totop");
+const syncTop=()=>{totop.hidden=scrollY<500};
+addEventListener("scroll",syncTop,{passive:true});syncTop();
+totop.addEventListener("click",()=>{scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});gq.blur()});
+
+spStrip();renderTabs();show(current);
+if(spLevel===null)openSp();
+
+</script>
+</body>
+</html>
