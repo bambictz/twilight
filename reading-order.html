@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Twilight Reading Order Poster</title>
+<meta name="description" content="The Twilight Saga reading order as a poster with the real book covers. Download it as a PNG.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Nunito+Sans:wght@400;600;700&family=Josefin+Sans:wght@600&display=swap">
+<style>
+/* Layout: one control bar over a scaled preview of the poster canvas. The poster itself is a fixed dark
+   rain-at-night design (it's an image to share), while the page chrome follows the viewer's theme. */
+:root{--bg:#eceeec;--surface:#fafbfa;--fg:#15181a;--muted:#566062;--line:#cfd4d1;--accent:#8e1b22;--accent-ink:#fff;
+ --display:"Cormorant Garamond",Georgia,serif;--body:"Nunito Sans","Segoe UI",system-ui,sans-serif;--mono:"Josefin Sans","Gill Sans",sans-serif;color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0b0c0d;--surface:#141617;--fg:#ecebe8;--muted:#a2a8a7;--line:#2b2f30;--accent:#e0505a;--accent-ink:#0b0c0d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0c0d;--surface:#141617;--fg:#ecebe8;--muted:#a2a8a7;--line:#2b2f30;--accent:#e0505a;--accent-ink:#0b0c0d;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 var(--body)}
+.wrap{max-width:900px;margin:0 auto;padding-block:20px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-family:var(--display);font-size:2.1rem;font-weight:600;margin:0;line-height:1.1}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+p.lede{color:var(--muted);margin:6px 0 16px;max-width:65ch}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+.chip{font:inherit;font-size:.92rem;padding:7px 13px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--fg);cursor:pointer;min-height:40px}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn{font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer;min-height:44px}
+.btn[disabled]{opacity:.5;cursor:wait}
+.sp{flex:1}
+.status{font-size:.9rem;color:var(--muted);min-height:1.4em;margin:0 0 10px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px}
+canvas{display:block;width:100%;height:auto;border-radius:6px}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">The Reader's Atlas · Twilight</p>
+  <h1>Reading Order Poster</h1>
+  <p class="lede">The Twilight Saga reading order with book covers from Open Library. Pick which books to show, wait for the covers to load, then download the PNG. <a href="./">Back to the guide</a></p>
+  <div class="controls" role="group" aria-label="Choose books">
+    <button class="chip" data-s="all" aria-pressed="true">All books</button>
+    <button class="chip" data-s="saga">The Twilight Saga</button>
+    <button class="chip" data-s="comp">Companion novels</button>
+    <span class="sp"></span>
+    <button class="btn" id="dl" disabled>Download PNG</button>
+  </div>
+  <p class="status" id="status" role="status">Loading covers…</p>
+  <div class="stage"><canvas id="cv" aria-label="Twilight reading order poster"></canvas></div>
+</div>
+<script>
+/* ---- Twilight reading-order poster (shared by index.html and reading-order.html) ----
+   Draws a fixed, dark "black cover" poster on a canvas: rain-streaked night, red accents, real covers
+   where they loaded, coloured spines where they didn't. opt = {title, subtitle, legend:[[name,col]],
+   items:[{soon, t, num, cap, col, spine, img, date}], foot1, foot2} */
+function drawTwilightPoster(cv,opt){
+ const ctx=cv.getContext("2d");
+ const F={mark:'"Josefin Sans", "Gill Sans", system-ui, sans-serif',disp:'"Cormorant Garamond", Georgia, serif',body:'"Nunito Sans", system-ui, sans-serif'};
+ const W=1500,M=90,COLS=4,GAP=40,CW=(W-2*M-(COLS-1)*GAP)/COLS,CH=CW*1.5,TXT=104,RGAP=44,HEAD=opt.legend&&opt.legend.length?310:270,FOOT=130;
+ const items=opt.items,rows=Math.max(1,Math.ceil(items.length/COLS)),H=HEAD+rows*(CH+TXT)+(rows-1)*RGAP+FOOT;
+ cv.width=W;cv.height=H;
+ const rr=(x,y,w,h,r)=>{ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()};
+ const wrap=(t,mw,font)=>{ctx.font=font;const ws=String(t).split(" "),L=[];let c="";for(const w of ws){const x=c?c+" "+w:w;if(ctx.measureText(x).width>mw&&c){L.push(c);c=w}else c=x}if(c)L.push(c);
+  if(L.length>2){L.length=2;let l=L[1];while(ctx.measureText(l+"…").width>mw&&l.length)l=l.slice(0,-1);L[1]=l+"…"}return L};
+ const shade=(hex,p)=>{const n=parseInt(hex.slice(1),16);const f=v=>Math.max(0,Math.min(255,Math.round(v+(p<0?v*p:(255-v)*p))));return"#"+[n>>16,n>>8&255,n&255].map(v=>f(v).toString(16).padStart(2,"0")).join("")};
+ /* night sky, a band of Forks mist, and rain */
+ const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,"#1b1e21");bg.addColorStop(.4,"#0f1112");bg.addColorStop(1,"#070708");ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+ const mist=ctx.createRadialGradient(W/2,40,40,W/2,40,W*.7);mist.addColorStop(0,"rgba(220,228,226,.13)");mist.addColorStop(1,"rgba(220,228,226,0)");ctx.fillStyle=mist;ctx.fillRect(0,0,W,H*.5);
+ let seed=11;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+ ctx.strokeStyle="#ffffff";ctx.lineCap="round";for(let i=0;i<340;i++){const x=rnd()*(W+200)-100,y=rnd()*H,l=18+rnd()*46;ctx.globalAlpha=.03+rnd()*.07;ctx.lineWidth=1+rnd()*.8;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-l*.26,y+l);ctx.stroke()}ctx.globalAlpha=1;
+ /* header */
+ ctx.textAlign="center";ctx.textBaseline="alphabetic";
+ ctx.fillStyle="#b9c0bf";ctx.font=`600 22px ${F.mark}`;ctx.fillText("THE  READER'S  ATLAS",W/2,86);
+ ctx.fillStyle="#f2f1ee";ctx.font=`700 96px ${F.disp}`;ctx.fillText(opt.title,W/2,182);
+ ctx.fillStyle="#e0505a";ctx.font=`600 italic 40px ${F.disp}`;ctx.fillText(opt.subtitle,W/2,232);
+ if(opt.legend&&opt.legend.length){ctx.font=`600 21px ${F.body}`;const ws=opt.legend.map(([n])=>ctx.measureText(n).width+40),tot=ws.reduce((a,b)=>a+b,0)+(ws.length-1)*30;let x=W/2-tot/2;ctx.textAlign="left";
+  opt.legend.forEach(([n,col],i)=>{ctx.fillStyle=col;ctx.beginPath();ctx.arc(x+10,268,9,0,7);ctx.fill();ctx.fillStyle="#d5dad8";ctx.fillText(n,x+28,275);x+=ws[i]+30});ctx.textAlign="center"}
+ /* grid */
+ items.forEach((it,i)=>{const r=Math.floor(i/COLS),c=i%COLS,inRow=Math.min(COLS,items.length-r*COLS),x=M+(COLS-inRow)*(CW+GAP)/2+c*(CW+GAP),y=HEAD+r*(CH+TXT+RGAP);
+  if(!it.soon){
+   ctx.save();ctx.shadowColor="rgba(0,0,0,.6)";ctx.shadowBlur=30;ctx.shadowOffsetY=14;rr(x,y,CW,CH,8);ctx.fillStyle="#000";ctx.fill();ctx.restore();
+   if(it.img){ctx.save();rr(x,y,CW,CH,8);ctx.clip();const k=Math.max(CW/it.img.naturalWidth,CH/it.img.naturalHeight),dw=it.img.naturalWidth*k,dh=it.img.naturalHeight*k;ctx.drawImage(it.img,x+(CW-dw)/2,y+(CH-dh)/2,dw,dh);ctx.restore()}
+   else{const g=ctx.createLinearGradient(x,y,x+CW,y);g.addColorStop(0,it.spine);g.addColorStop(1,shade(it.spine,-.3));rr(x,y,CW,CH,8);ctx.fillStyle=g;ctx.fill();
+    ctx.save();ctx.translate(x+CW/2,y+CH/2);ctx.rotate(-Math.PI/2);ctx.fillStyle="rgba(255,255,255,.93)";const f=`600 34px ${F.disp}`;const L=wrap(it.t,CH-70,f);ctx.font=f;ctx.textBaseline="middle";L.forEach((l,k)=>ctx.fillText(l,0,(k-(L.length-1)/2)*40));ctx.restore();ctx.textBaseline="alphabetic"}
+   rr(x,y,CW,CH,8);ctx.strokeStyle="rgba(255,255,255,.12)";ctx.lineWidth=2;ctx.stroke();
+   ctx.beginPath();ctx.arc(x+10,y+10,32,0,7);ctx.fillStyle=it.col;ctx.fill();ctx.lineWidth=5;ctx.strokeStyle="#0b0c0d";ctx.stroke();
+   ctx.fillStyle="#0b0c0d";ctx.font=`600 28px ${F.mark}`;ctx.textBaseline="middle";ctx.fillText(String(it.num),x+10,y+13);ctx.textBaseline="alphabetic";
+   const L=wrap(it.t,CW,`700 30px ${F.disp}`);ctx.fillStyle="#f2f1ee";L.forEach((l,k)=>ctx.fillText(l,x+CW/2,y+CH+38+k*31));
+   ctx.fillStyle=it.col;ctx.font=`600 16px ${F.mark}`;ctx.fillText(it.cap.toUpperCase(),x+CW/2,y+CH+38+L.length*31+4);
+  } else {
+   rr(x,y,CW,CH,8);ctx.fillStyle="rgba(255,255,255,.04)";ctx.fill();ctx.setLineDash([12,10]);ctx.lineWidth=3;ctx.strokeStyle=it.col;ctx.stroke();ctx.setLineDash([]);
+   ctx.fillStyle=it.col;ctx.font=`600 22px ${F.mark}`;ctx.fillText("COMING",x+CW/2,y+CH/2-8);ctx.fillStyle="#d5dad8";ctx.font=`600 italic 36px ${F.disp}`;ctx.fillText(it.date||"TBA",x+CW/2,y+CH/2+36);
+   const L=wrap(it.t,CW,`700 30px ${F.disp}`);ctx.fillStyle="#cfd4d2";L.forEach((l,k)=>ctx.fillText(l,x+CW/2,y+CH+38+k*31));
+   ctx.fillStyle=it.col;ctx.font=`600 16px ${F.mark}`;ctx.fillText(it.cap.toUpperCase(),x+CW/2,y+CH+38+L.length*31+4)}});
+ /* footer */
+ ctx.fillStyle="#b9c0bf";ctx.font=`600 22px ${F.mark}`;ctx.fillText(opt.foot1,W/2,H-70);
+ ctx.fillStyle="#7f8786";ctx.font=`400 18px ${F.body}`;ctx.fillText(opt.foot2,W/2,H-38);
+}
+/* Load a cover with CORS (so the canvas can still be exported), trying each ISBN in turn. Resolves to an Image or null. */
+const TP_IMG={};
+function loadTwilightCover(key,isbns,own){if(TP_IMG[key])return TP_IMG[key];
+ const list=[...(own?[own]:[]),...String(isbns||"").split(" ").filter(Boolean).map(i=>"https://covers.openlibrary.org/b/isbn/"+i+"-L.jpg?default=false")];
+ TP_IMG[key]=new Promise(res=>{const next=k=>{if(k>=list.length)return res(null);const im=new Image();im.crossOrigin="anonymous";im.onload=()=>im.naturalWidth>10?res(im):next(k+1);im.onerror=()=>next(k+1);im.src=list[k]};next(0)});
+ return TP_IMG[key]}
+function downloadCanvas(cv,name,status){
+ const say=t=>{if(status)status.textContent=t};
+ try{cv.toBlob(bl=>{if(!bl){say("Couldn't create the PNG. Right-click (or long-press) the poster and save the image instead.");return}
+  const a=document.createElement("a");a.href=URL.createObjectURL(bl);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);say("Downloaded.")},"image/png")}
+ catch(e){say("Couldn't create the PNG because a cover blocked the download. Right-click (or long-press) the poster and save the image instead.")}}
+
+const SER={saga:{name:"The Twilight Saga",col:"#d3343f"},comp:{name:"Companion novels",col:"#9cb8c6"}};
+/* [series, label, title, year, ISBNs (first with a cover wins), spine colour]; order = recommended reading order */
+const BOOKS=[
+ ["saga","Saga 1","Twilight",2005,"9780316160179","#7a1419"],
+ ["saga","Saga 2","New Moon",2006,"9780316160193","#b4472a"],
+ ["saga","Saga 3","Eclipse",2007,"9780316160209","#5a1430"],
+ ["comp","Novella","The Short Second Life of Bree Tanner",2010,"9780316125581","#6d2b4a"],
+ ["saga","Saga 4","Breaking Dawn",2008,"9780316067928","#2a2a2c"],
+ ["comp","Edward's side","Midnight Sun",2020,"9780316707046","#a3202f"],
+ ["comp","Reimagined","Life and Death",2015,"9780316505451 9780316268394","#3e4a63"]
+].map(([s,lab,t,y,isbn,col],i)=>({s,lab,t,y,isbn,col,order:i+1}));
+const COMING=[["saga","More Twilight books","TBA"]];
+const covers={};let sel="all";
+const cv=document.getElementById("cv"),st=document.getElementById("status");
+function draw(){
+ const list=BOOKS.filter(b=>sel==="all"||b.s===sel),up=COMING.filter(c=>sel==="all"||c[0]===sel);
+ drawTwilightPoster(cv,{
+  title:sel==="comp"?"Twilight Companions":"The Twilight Saga",
+  subtitle:sel==="all"?"Reading order, saga and companions":sel==="saga"?"Reading order":"Reading order, after the saga",
+  legend:sel==="all"?Object.values(SER).map(s=>[s.name,s.col]):[],
+  items:[...list.map(b=>({t:b.t,num:b.order,cap:`${b.lab} · ${b.y}`,col:SER[b.s].col,spine:b.col,img:covers[b.t]})),...up.map(([s,t,d])=>({soon:true,t,cap:"Twilight world",col:SER[s].col,date:d}))],
+  foot1:"READERSATLAS.COM  ·  @READERS.ATLAS",
+  foot2:"Unofficial fan guide. Covers via Open Library. Not affiliated with Stephenie Meyer or her publishers."})}
+async function loadCovers(){let done=0;
+ await Promise.all(BOOKS.map(async b=>{covers[b.t]=await loadTwilightCover(b.t,b.isbn);done++;st.textContent=`Loading covers… ${done} of ${BOOKS.length}`;draw()}));
+ const miss=BOOKS.filter(b=>!covers[b.t]).map(b=>b.t);
+ st.textContent=miss.length?`Ready. ${miss.length} cover${miss.length>1?"s":""} not found, shown as a coloured spine: ${miss.join(", ")}.`:"Ready. All covers loaded.";
+ document.getElementById("dl").disabled=false}
+const initial=new URLSearchParams(location.search).get("s");
+if(initial in SER){sel=initial;document.querySelectorAll("[data-s]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.s===sel))}
+document.querySelectorAll("[data-s]").forEach(b=>b.addEventListener("click",()=>{sel=b.dataset.s;document.querySelectorAll("[data-s]").forEach(x=>x.setAttribute("aria-pressed",x===b));draw()}));
+document.getElementById("dl").addEventListener("click",()=>downloadCanvas(cv,`twilight-reading-order${sel==="all"?"":"-"+sel}.png`,st));
+draw();(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{draw();loadCovers()});
+</script>
+</body>
+</html>

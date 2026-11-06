@@ -121,12 +121,29 @@ a.lnk,button.lnk{color:var(--accent);background:none;border:0;padding:0;font:inh
 .links{margin-top:10px;font-size:.9rem}
 .note{font-size:.9rem;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r);padding:10px 12px;margin:0 0 18px;max-width:80ch}
 /* book guide */
-.order{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:0 0 22px;padding:0;list-style:none;counter-reset:o}
-.order li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-size:.9rem;position:relative}
-.order li b{display:block;font-family:var(--display);font-weight:500;font-size:.98rem;line-height:1.25}
-.order li .n{font-family:var(--mono);font-size:.66rem;color:var(--bronze);letter-spacing:.08em;text-transform:uppercase}
-.order li.opt{border-style:dashed}
-.order li.soon{border-style:dashed;opacity:.85}
+.orderbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin:0 0 22px}
+.orderbox summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px 14px;font-weight:600}
+.orderbox summary::-webkit-details-marker{display:none}
+.orderbox summary .t{font-family:var(--display);font-size:1.25rem;font-weight:600;white-space:nowrap}
+.orderbox summary .c{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.orderbox summary .chev{margin-left:auto;width:18px;height:18px;transition:transform .2s;color:var(--muted)}
+.orderbox[open] summary .chev{transform:rotate(180deg)}
+.orderbox summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:var(--r)}
+.order{list-style:none;margin:0;padding:0 14px 12px;columns:3 220px;column-gap:24px}
+.order li{display:flex;align-items:baseline;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);break-inside:avoid;font-size:.95rem}
+.order li .n{flex:none;width:22px;text-align:right;font-family:var(--mono);font-size:.74rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.order li .d{flex:none;width:8px;height:8px;border-radius:50%;align-self:center}
+.order li .ti{flex:1;min-width:0}
+.order li .y{flex:none;font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.order li.soon .ti{font-style:italic;color:var(--muted)}
+.order button.lnk{text-decoration:none;color:var(--fg);text-align:left;font:inherit}
+.order button.lnk:hover{color:var(--accent);text-decoration:underline}
+.poster{margin:6px 14px 14px;display:grid;gap:8px}
+.poster a.pv{display:block;width:100%;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#0f1112}
+.poster canvas{display:block;width:100%;height:auto}
+.poster .pbar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.poster figcaption{font-size:.85rem;color:var(--muted);flex:1 1 220px}
+.poster .buybtn[disabled]{opacity:.5;cursor:wait}
 .bookcard{display:grid;grid-template-columns:64px 1fr;gap:14px}
 .spine{border-radius:4px;min-height:96px;display:flex;align-items:flex-end;justify-content:center;padding:12px 0;font-family:var(--display);font-size:1rem;letter-spacing:.14em;color:#fff;line-height:1;box-shadow:inset -6px 0 0 rgba(0,0,0,.18)}
 .spine span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
@@ -303,7 +320,7 @@ h2{font-size:1.85rem;letter-spacing:.01em}
 h3{font-size:1.28rem;letter-spacing:.01em}
 .brand h1{font-weight:600;letter-spacing:.03em}
 .brand h1 .thorn{color:var(--accent);font-style:italic}
-.eyebrow,.trope,.lbl,.agenda b,dl.kv dt,.pill,.count,.books,.gres .k,.order li .n,.rc-s,.spd .opt-h,ol.tl .when,.era .when,.place .n{letter-spacing:.12em}
+.eyebrow,.trope,.lbl,.agenda b,dl.kv dt,.pill,.count,.books,.gres .k,.rc-s,.spd .opt-h,ol.tl .when,.era .when,.place .n{letter-spacing:.12em}
 header.bar{border-bottom:1px solid var(--line);box-shadow:inset 0 -2px 0 var(--accent)}
 .spine{font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:.12em;min-height:104px;box-shadow:inset -6px 0 0 rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.06)}
 .spine.dark{background-image:radial-gradient(circle at 50% 22%,rgba(255,255,255,.14) 0 7px,transparent 8px)}
@@ -329,7 +346,7 @@ header.bar{border-bottom:1px solid var(--line);box-shadow:inset 0 -2px 0 var(--a
 .cover.has-img img{opacity:1}
 .bookcard{grid-template-columns:96px 1fr}
 @media (max-width:700px){.cover{width:76px}.cover .spine{min-height:114px}.bookcard{grid-template-columns:76px 1fr}}
-.order li.dim{opacity:.35}
+@media (max-width:700px){.order{columns:1;padding:0 12px 10px}.orderbox summary .c .long{display:none}.poster{margin:4px 12px 12px}}
 .subnav{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.92rem;margin:-6px 0 14px}
 .afar{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-top:10px}
 </style>
@@ -381,6 +398,65 @@ header.bar{border-bottom:1px solid var(--line);box-shadow:inset 0 -2px 0 var(--a
 </footer>
 
 <script>
+/* ---- Twilight reading-order poster (shared by index.html and reading-order.html) ----
+   Draws a fixed, dark "black cover" poster on a canvas: rain-streaked night, red accents, real covers
+   where they loaded, coloured spines where they didn't. opt = {title, subtitle, legend:[[name,col]],
+   items:[{soon, t, num, cap, col, spine, img, date}], foot1, foot2} */
+function drawTwilightPoster(cv,opt){
+ const ctx=cv.getContext("2d");
+ const F={mark:'"Josefin Sans", "Gill Sans", system-ui, sans-serif',disp:'"Cormorant Garamond", Georgia, serif',body:'"Nunito Sans", system-ui, sans-serif'};
+ const W=1500,M=90,COLS=4,GAP=40,CW=(W-2*M-(COLS-1)*GAP)/COLS,CH=CW*1.5,TXT=104,RGAP=44,HEAD=opt.legend&&opt.legend.length?310:270,FOOT=130;
+ const items=opt.items,rows=Math.max(1,Math.ceil(items.length/COLS)),H=HEAD+rows*(CH+TXT)+(rows-1)*RGAP+FOOT;
+ cv.width=W;cv.height=H;
+ const rr=(x,y,w,h,r)=>{ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()};
+ const wrap=(t,mw,font)=>{ctx.font=font;const ws=String(t).split(" "),L=[];let c="";for(const w of ws){const x=c?c+" "+w:w;if(ctx.measureText(x).width>mw&&c){L.push(c);c=w}else c=x}if(c)L.push(c);
+  if(L.length>2){L.length=2;let l=L[1];while(ctx.measureText(l+"…").width>mw&&l.length)l=l.slice(0,-1);L[1]=l+"…"}return L};
+ const shade=(hex,p)=>{const n=parseInt(hex.slice(1),16);const f=v=>Math.max(0,Math.min(255,Math.round(v+(p<0?v*p:(255-v)*p))));return"#"+[n>>16,n>>8&255,n&255].map(v=>f(v).toString(16).padStart(2,"0")).join("")};
+ /* night sky, a band of Forks mist, and rain */
+ const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,"#1b1e21");bg.addColorStop(.4,"#0f1112");bg.addColorStop(1,"#070708");ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+ const mist=ctx.createRadialGradient(W/2,40,40,W/2,40,W*.7);mist.addColorStop(0,"rgba(220,228,226,.13)");mist.addColorStop(1,"rgba(220,228,226,0)");ctx.fillStyle=mist;ctx.fillRect(0,0,W,H*.5);
+ let seed=11;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+ ctx.strokeStyle="#ffffff";ctx.lineCap="round";for(let i=0;i<340;i++){const x=rnd()*(W+200)-100,y=rnd()*H,l=18+rnd()*46;ctx.globalAlpha=.03+rnd()*.07;ctx.lineWidth=1+rnd()*.8;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-l*.26,y+l);ctx.stroke()}ctx.globalAlpha=1;
+ /* header */
+ ctx.textAlign="center";ctx.textBaseline="alphabetic";
+ ctx.fillStyle="#b9c0bf";ctx.font=`600 22px ${F.mark}`;ctx.fillText("THE  READER'S  ATLAS",W/2,86);
+ ctx.fillStyle="#f2f1ee";ctx.font=`700 96px ${F.disp}`;ctx.fillText(opt.title,W/2,182);
+ ctx.fillStyle="#e0505a";ctx.font=`600 italic 40px ${F.disp}`;ctx.fillText(opt.subtitle,W/2,232);
+ if(opt.legend&&opt.legend.length){ctx.font=`600 21px ${F.body}`;const ws=opt.legend.map(([n])=>ctx.measureText(n).width+40),tot=ws.reduce((a,b)=>a+b,0)+(ws.length-1)*30;let x=W/2-tot/2;ctx.textAlign="left";
+  opt.legend.forEach(([n,col],i)=>{ctx.fillStyle=col;ctx.beginPath();ctx.arc(x+10,268,9,0,7);ctx.fill();ctx.fillStyle="#d5dad8";ctx.fillText(n,x+28,275);x+=ws[i]+30});ctx.textAlign="center"}
+ /* grid */
+ items.forEach((it,i)=>{const r=Math.floor(i/COLS),c=i%COLS,inRow=Math.min(COLS,items.length-r*COLS),x=M+(COLS-inRow)*(CW+GAP)/2+c*(CW+GAP),y=HEAD+r*(CH+TXT+RGAP);
+  if(!it.soon){
+   ctx.save();ctx.shadowColor="rgba(0,0,0,.6)";ctx.shadowBlur=30;ctx.shadowOffsetY=14;rr(x,y,CW,CH,8);ctx.fillStyle="#000";ctx.fill();ctx.restore();
+   if(it.img){ctx.save();rr(x,y,CW,CH,8);ctx.clip();const k=Math.max(CW/it.img.naturalWidth,CH/it.img.naturalHeight),dw=it.img.naturalWidth*k,dh=it.img.naturalHeight*k;ctx.drawImage(it.img,x+(CW-dw)/2,y+(CH-dh)/2,dw,dh);ctx.restore()}
+   else{const g=ctx.createLinearGradient(x,y,x+CW,y);g.addColorStop(0,it.spine);g.addColorStop(1,shade(it.spine,-.3));rr(x,y,CW,CH,8);ctx.fillStyle=g;ctx.fill();
+    ctx.save();ctx.translate(x+CW/2,y+CH/2);ctx.rotate(-Math.PI/2);ctx.fillStyle="rgba(255,255,255,.93)";const f=`600 34px ${F.disp}`;const L=wrap(it.t,CH-70,f);ctx.font=f;ctx.textBaseline="middle";L.forEach((l,k)=>ctx.fillText(l,0,(k-(L.length-1)/2)*40));ctx.restore();ctx.textBaseline="alphabetic"}
+   rr(x,y,CW,CH,8);ctx.strokeStyle="rgba(255,255,255,.12)";ctx.lineWidth=2;ctx.stroke();
+   ctx.beginPath();ctx.arc(x+10,y+10,32,0,7);ctx.fillStyle=it.col;ctx.fill();ctx.lineWidth=5;ctx.strokeStyle="#0b0c0d";ctx.stroke();
+   ctx.fillStyle="#0b0c0d";ctx.font=`600 28px ${F.mark}`;ctx.textBaseline="middle";ctx.fillText(String(it.num),x+10,y+13);ctx.textBaseline="alphabetic";
+   const L=wrap(it.t,CW,`700 30px ${F.disp}`);ctx.fillStyle="#f2f1ee";L.forEach((l,k)=>ctx.fillText(l,x+CW/2,y+CH+38+k*31));
+   ctx.fillStyle=it.col;ctx.font=`600 16px ${F.mark}`;ctx.fillText(it.cap.toUpperCase(),x+CW/2,y+CH+38+L.length*31+4);
+  } else {
+   rr(x,y,CW,CH,8);ctx.fillStyle="rgba(255,255,255,.04)";ctx.fill();ctx.setLineDash([12,10]);ctx.lineWidth=3;ctx.strokeStyle=it.col;ctx.stroke();ctx.setLineDash([]);
+   ctx.fillStyle=it.col;ctx.font=`600 22px ${F.mark}`;ctx.fillText("COMING",x+CW/2,y+CH/2-8);ctx.fillStyle="#d5dad8";ctx.font=`600 italic 36px ${F.disp}`;ctx.fillText(it.date||"TBA",x+CW/2,y+CH/2+36);
+   const L=wrap(it.t,CW,`700 30px ${F.disp}`);ctx.fillStyle="#cfd4d2";L.forEach((l,k)=>ctx.fillText(l,x+CW/2,y+CH+38+k*31));
+   ctx.fillStyle=it.col;ctx.font=`600 16px ${F.mark}`;ctx.fillText(it.cap.toUpperCase(),x+CW/2,y+CH+38+L.length*31+4)}});
+ /* footer */
+ ctx.fillStyle="#b9c0bf";ctx.font=`600 22px ${F.mark}`;ctx.fillText(opt.foot1,W/2,H-70);
+ ctx.fillStyle="#7f8786";ctx.font=`400 18px ${F.body}`;ctx.fillText(opt.foot2,W/2,H-38);
+}
+/* Load a cover with CORS (so the canvas can still be exported), trying each ISBN in turn. Resolves to an Image or null. */
+const TP_IMG={};
+function loadTwilightCover(key,isbns,own){if(TP_IMG[key])return TP_IMG[key];
+ const list=[...(own?[own]:[]),...String(isbns||"").split(" ").filter(Boolean).map(i=>"https://covers.openlibrary.org/b/isbn/"+i+"-L.jpg?default=false")];
+ TP_IMG[key]=new Promise(res=>{const next=k=>{if(k>=list.length)return res(null);const im=new Image();im.crossOrigin="anonymous";im.onload=()=>im.naturalWidth>10?res(im):next(k+1);im.onerror=()=>next(k+1);im.src=list[k]};next(0)});
+ return TP_IMG[key]}
+function downloadCanvas(cv,name,status){
+ const say=t=>{if(status)status.textContent=t};
+ try{cv.toBlob(bl=>{if(!bl){say("Couldn't create the PNG. Right-click (or long-press) the poster and save the image instead.");return}
+  const a=document.createElement("a");a.href=URL.createObjectURL(bl);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);say("Downloaded.")},"image/png")}
+ catch(e){say("Couldn't create the PNG because a cover blocked the download. Right-click (or long-press) the poster and save the image instead.")}}
+
 /* ============================================================
    DATA
    Book codes, in recommended reading order:
@@ -436,7 +512,7 @@ const BOOKLIST=[
 ];
 const BIDX=Object.fromEntries(BOOKLIST.map((b,i)=>[b.c,i]));
 const BOOKS=Object.fromEntries(BOOKLIST.map(b=>[b.c,b.abbr||b.title]));
-const UPCOMING={title:"More Twilight books",date:"No date announced",note:"Stephenie Meyer has said she has at least two more Twilight-world books outlined, picking up after Breaking Dawn. As of late 2026 there's no title or release date, so treat any 'release date' you see online as a rumour."};
+const UPCOMING={s:"saga",title:"More Twilight books",date:"No date announced",note:"Stephenie Meyer has said she has at least two more Twilight-world books outlined, picking up after Breaking Dawn. As of late 2026 there's no title or release date, so treat any 'release date' you see online as a rumour."};
 
 /* Characters
    s = faction · role: lead | sup | bad · books = first appearance · from = where they're from (fromT = place card)
@@ -962,7 +1038,7 @@ function flash(el){if(!el)return;el.scrollIntoView({behavior:matchMedia("(prefer
 document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(!b)return;go(b.dataset.go)});
 function go(ref){const i=ref.indexOf(":"),k=ref.slice(0,i),id=ref.slice(i+1);
  if(k==="char"){Object.assign(charState,{q:"",role:"all",ser:"all",bk:"all",fac:"all"});show("characters",()=>flash(document.getElementById("c-"+id)))}
- else if(k==="book"){bookSer="all";show("books",()=>flash(document.getElementById("b-"+id)))}
+ else if(k==="book"){if(bookSer!=="all"&&BOOKLIST[bi(id)]?.s!==bookSer)bookSer="all";show("books",()=>flash(document.getElementById("b-"+id)))}
  else if(k==="world"){Object.assign(worldState,{era:"all",bk:"all",reg:"all"});show("world",()=>{const el=document.getElementById(id);if(el&&el.dataset.pl)selectPlace(el.dataset.pl);flash(el)})}
  else if(k==="recap"){recapBook=id;recapQ="";show("recaps")}
  else if(k==="fam"){famFocus=id;show("family")}
@@ -983,22 +1059,53 @@ function bookCard(b){const key="bk-"+b.c,i=bi(b.c);
  const body=`<p class="eyebrow">Read ${ord(i+1)} · ${esc(b.s==="saga"?"Twilight Saga "+b.n:"Companion · "+b.n)} · ${b.year}</p><h3>${esc(b.title)}</h3><p class="trope">${esc(b.trope)}</p><span class="lbl" style="margin-top:10px">Main plot</span><p class="bk-plot" style="margin-top:2px">${esc(b.plot)}</p><span class="lbl" style="margin-top:10px">Main characters</span><div class="castlist">${b.cast.map(charLink).join("")}</div>`;
  return `<article class="card" id="b-${b.c}" style="border-top:3px solid ${BSER[b.s].col}"><div class="bookcard"><div class="cover"><div class="spine${b.dark?" dark":""}" style="background:${b.col}"><span>${esc((b.abbr||b.title).replace(/^(A|The) /,""))}</span></div>${coverImg(b)}</div><div>${sp(b.sp>=0&&hideField(b.sp),key,body,"div")}
   <div class="bk-actions"><a class="buybtn" href="${affUrl(b.title)}" target="_blank" rel="${affRel}">${CART}Buy the book</a><button class="buybtn ghost" data-go="recap:${b.c}">Recap</button></div></div></div></article>`}
+/* Reading-order poster: drawn live on a canvas inside the dropdown (same design as reading-order.html).
+   Covers load with CORS so the poster can be downloaded as a PNG; missing covers become coloured spines.
+   Built only while the dropdown is open. */
+const PSER={saga:"#d3343f",comp:"#9cb8c6"};
+const posterHTML=()=>`<figure class="poster" id="poster"><a class="pv" href="reading-order.html${bookSer==="all"?"":"?s="+bookSer}" target="_blank" rel="noopener" aria-label="Open the reading order poster page"><canvas id="poster-cv" aria-label="${bookSer==="all"?"Twilight":esc(BSER[bookSer].name)} reading order poster with book covers"></canvas></a>
+ <div class="pbar"><figcaption id="poster-st">Loading covers…</figcaption><button type="button" class="buybtn" id="poster-dl" disabled>Download PNG</button><a class="buybtn ghost" href="reading-order.html${bookSer==="all"?"":"?s="+bookSer}" target="_blank" rel="noopener">Open full size</a></div></figure>`;
+function posterOpts(sel,imgs){
+ const list=BOOKLIST.filter(b=>sel==="all"||b.s===sel),up=[UPCOMING].filter(u=>sel==="all"||u.s===sel);
+ return{title:sel==="comp"?"Twilight Companions":"The Twilight Saga",
+  subtitle:sel==="all"?"Reading order, saga and companions":sel==="saga"?"Reading order":"Reading order, after the saga",
+  legend:sel==="all"?Object.keys(BSER).map(k=>[BSER[k].name,PSER[k]]):[],
+  items:[...list.map(b=>({t:b.abbr||b.title,num:bi(b.c)+1,cap:`${b.s==="saga"?"Saga "+b.n:b.n} · ${b.year}`,col:PSER[b.s],spine:b.col,img:imgs[b.c]})),
+   ...up.map(u=>({soon:true,t:u.title,cap:"Twilight world",col:PSER[u.s],date:"TBA"}))],
+  foot1:"READERSATLAS.COM  ·  @READERS.ATLAS",
+  foot2:"Unofficial fan guide. Covers via Open Library. Not affiliated with Stephenie Meyer or her publishers."}}
+function buildPoster(){const cv=document.getElementById("poster-cv");if(!cv||cv.dataset.built)return;cv.dataset.built="1";
+ const sel=bookSer,imgs={},list=BOOKLIST.filter(b=>sel==="all"||b.s===sel),st=document.getElementById("poster-st"),dl=document.getElementById("poster-dl");
+ const live=()=>document.getElementById("poster-cv")===cv;
+ const redraw=()=>{if(live())drawTwilightPoster(cv,posterOpts(sel,imgs))};
+ redraw();let done=0;
+ Promise.all(list.map(b=>loadTwilightCover(b.c,b.isbn,b.cover).then(img=>{if(img)imgs[b.c]=img;done++;if(live())st.textContent=`Loading covers… ${done} of ${list.length}`;redraw()}))).then(()=>{if(!live())return;
+  const miss=list.filter(b=>!imgs[b.c]).map(b=>b.abbr||b.title);
+  st.textContent=miss.length?`Tap the poster to open it full size. ${miss.length} cover${miss.length>1?"s":""} couldn't load and show as a coloured spine.`:"Tap the poster to open it full size, or download it here.";
+  dl.disabled=false});
+ dl.addEventListener("click",()=>downloadCanvas(cv,`twilight-reading-order${sel==="all"?"":"-"+sel}.png`,st));
+ if(document.fonts)document.fonts.ready.then(redraw)}
 function renderBooks(){
  const v=$("#view");store.set("twiBookSer",bookSer);
- const order=BOOKLIST.map((b,i)=>`<li style="border-top:3px solid ${BSER[b.s].col}" class="${bookSer!=="all"&&bookSer!==b.s?"dim":""}"><span class="n">Read ${ord(i+1)} · ${esc(b.s==="saga"?"Saga "+b.n:"Companion")}</span><b>${esc(b.abbr||b.title)}</b>${b.year}</li>`);
- order.push(`<li class="opt${bookSer==="saga"?" dim":""}"><span class="n">Optional extra</span><b>The Official Illustrated Guide</b>2011 · the encyclopedia: backstories, family histories, maps</li>`);
- order.push(`<li class="soon"><span class="n">Someday · Twilight world</span><b>${esc(UPCOMING.title)}</b>${esc(UPCOMING.date)}</li>`);
+ const inSer=s=>bookSer==="all"||bookSer===s;
+ const order=BOOKLIST.map((b,i)=>[b,i]).filter(([b])=>inSer(b.s)).map(([b,i])=>`<li><span class="n">${i+1}</span><span class="d" style="background:${BSER[b.s].col}"></span><span class="ti"><button class="lnk" data-go="book:${b.c}">${esc(b.abbr||b.title)}</button></span><span class="y">${b.year}</span></li>`);
+ if(inSer("comp"))order.push(`<li class="soon"><span class="n">+</span><span class="d" style="background:${BSER.comp.col}"></span><span class="ti">Illustrated Guide (optional)</span><span class="y">2011</span></li>`);
+ if(inSer(UPCOMING.s))order.push(`<li class="soon"><span class="n">·</span><span class="d" style="background:${BSER[UPCOMING.s].col}"></span><span class="ti">${esc(UPCOMING.title)}</span><span class="y">TBA</span></li>`);
+ const nBooks=BOOKLIST.filter(b=>inSer(b.s)).length;
+ const orderOpen=store.get("twiOrderOpen",false);
  const groups=bookSer==="all"?["saga","comp"]:[bookSer];
  v.innerHTML=`<p class="eyebrow">Start here</p><h2>Book Guide</h2>
  <p class="lede">Four books in the main saga, plus three companions that retell or sit alongside it. This is the order I'd read them in: the saga in order with Bree Tanner slotted in after Eclipse (it spoils Eclipse's ending), then Midnight Sun and Life and Death, which both retell Twilight. Premises only here; full plots live in Recaps.</p>
  ${WIP}
- <div class="controls seg"><span class="lbl">Show</span>${[["all","All books"],["saga","The Twilight Saga"],["comp","Companion novels"]].map(([k,l])=>`<button class="chip" data-bs="${k}" aria-pressed="${bookSer===k}">${k==="all"?"":sw(BSER[k].col)}${l}</button>`).join("")}</div>
- <ol class="order">${order.join("")}</ol>
+ <div class="controls seg" role="group" aria-label="Filter by series"><span class="lbl">Show</span>${[["all","All books"],["saga","The Twilight Saga"],["comp","Companion novels"]].map(([k,l])=>`<button class="chip" data-bs="${k}" aria-pressed="${bookSer===k}">${k==="all"?"":sw(BSER[k].col)}${l}</button>`).join("")}</div>
+ <details class="orderbox" id="orderbox"${orderOpen?" open":""}><summary><span class="t">Reading order</span><span class="c"><span class="long">${bookSer==="all"?"Saga and companions":esc(BSER[bookSer].name)} · </span>${nBooks} books</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><ol class="order">${order.join("")}</ol>${posterHTML()}</details>
  <p class="note">Publication order is slightly different: Midnight Sun (2020) came out last and Life and Death (2015) before it. Either works. Midnight Sun reads best once you know how the saga ends.</p>
  ${groups.map(s=>`<div class="group-h"><h3>${sw(BSER[s].col)}${esc(BSER[s].name)}</h3><span>${s==="saga"?"Bella's story, books 1–4":"Novella, Edward's side and the reimagining"}</span></div>
  <div class="grid wide">${BOOKLIST.filter(b=>b.s===s).map(bookCard).join("")}
- ${s==="comp"?`<article class="card" id="b-next" style="border-style:dashed"><div class="bookcard"><div class="cover"><div class="spine" style="background:#6f7478"><span>Coming?</span></div></div><div><p class="eyebrow">Twilight world · ${esc(UPCOMING.date)}</p><h3>${esc(UPCOMING.title)}</h3>${sp(hideItem(bi("BD")),"bk-next",`<p class="bk-plot">${esc(UPCOMING.note)}</p>`,"div")}</div></div></article>`:""}</div>`).join("")}`;
+ ${s===UPCOMING.s?`<article class="card" id="b-next" style="border-style:dashed"><div class="bookcard"><div class="cover"><div class="spine" style="background:#6f7478"><span>Coming?</span></div></div><div><p class="eyebrow">Twilight world · ${esc(UPCOMING.date)}</p><h3>${esc(UPCOMING.title)}</h3>${sp(hideItem(bi("BD")),"bk-next",`<p class="bk-plot">${esc(UPCOMING.note)}</p>`,"div")}</div></div></article>`:""}</div>`).join("")}`;
  v.querySelectorAll("[data-bs]").forEach(b=>b.addEventListener("click",()=>{bookSer=b.dataset.bs;renderBooks()}));
+ $("#orderbox").addEventListener("toggle",e=>{store.set("twiOrderOpen",e.target.open);if(e.target.open)buildPoster()});
+ if(orderOpen)buildPoster();
 }
 
 /* ============ CHARACTERS ============ */
